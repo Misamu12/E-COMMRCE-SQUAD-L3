@@ -1,0 +1,6 @@
+- [x] Update pages.html: Add onclick="addToCart(this)" to all product buttons
+- [x] Update controllers.js: Define addToCart function and remove jQuery click event listener
+- [ ] Add input for number of people to each product in pages.html
+- [ ] Modify getData function in controllers.js to collect data from each product (quantity and people) and log to console
+- [ ] Add a button to call getData function
+- [ ] Test the page in browser to verify functionality

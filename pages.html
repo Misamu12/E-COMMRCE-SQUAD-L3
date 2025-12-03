@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>E-Commerce Alcool</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- jQuery CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="js/controllers.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f8f9fa; color: #333; }
+    header { background-color: #343a40; color: white; padding: 20px; text-align: center; }
+    h1 { margin: 0; font-size: 2.5em; }
+    .products { max-width: 1200px; margin: 20px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .product { background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); overflow: hidden; text-align: center; padding: 20px; }
+    .product img { width: 100%; height: 500px; object-fit: cover; border-radius: 8px; }
+    .product h3 { margin: 15px 0 10px; font-size: 1.2em; }
+    .product p { font-size: 1.1em; margin: 10px 0; }
+    .price { font-weight: bold; font-size: 1.3em; color: #28a745; }
+    label { display: block; margin: 10px 0 5px; font-weight: bold; }
+    input { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+    button { background-color: #808386; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 1em; margin-top: 10px; }
+    button:hover { background-color: #7ee7cd; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>E-Commerce d'Alcool</h1>
+  </header>
+
+  <section class="products">
+    <div class="product">
+      <img src="black.jpg" alt="Black label">
+      <h3>Black label</h3>
+      <p class="price">50$</p>
+      <label for="qty-black">Quantité</label>
+      <input id="qty-black" name="Quantité" type="number" min="1" value="1">
+       <label for="people-black">Nombre de personnes</label>
+      <input id="people-black" name="Nombre de personnes" type="number" min="1" value="1">
+      <button type="button" data-product="Black label" data-id="black" onclick="getData(this)">payer</button>
+    </div>
+    <div class="product">
+      <img src="bleu.jpg" alt="Imperial bleu">
+      <h3>Imperial bleu</h3>
+      <p class="price">30$</p>
+      <label for="qty-bleu">Quantité</label>
+      <input id="qty-bleu" name="Quantité"  type="number" min="1" value="1">
+      <label for="people-bleu">Nombre de personnes</label>
+      <input id="people-bleu" name="Nombre de personnes" type="number" min="1" value="1">
+      <button type="button" data-product="Imperial bleu" data-id="bleu" onclick="getData(this)">payer</button>
+    </div>
+    <div class="product">
+      <img src="jack.jpg" alt="Jack Daniel's">
+      <h3>Jack Daniel's</h3>
+      <p class="price">80$</p>
+      <label for="qty-jack">Quantité</label>
+      <input id="qty-jack" name="Quantité"  type="number" min="1" value="1">
+      <label for="people-jack">Nombre de personnes</label>
+      <input id="people-jack" name="Nombre de personnes" type="number" min="1" value="1">
+      <button type="button" data-product="Jack Daniel's" onclick=" getData(this)">payer</button>
+    </div>
+    <div class="product">
+      <img src="jb.jpg" alt="JB Whisky">
+      <h3>JB Whisky</h3>
+      <p class="price">70$</p>
+      <label for="qty-jb">Quantité</label>
+      <input id="qty-jb" name="Quantité"  type="number" min="1" value="1">
+       <label for="people-jb">Nombre de personnes</label>
+      <input id="people-jb" name="Nombre de personnes" type="number" min="1" value="1">
+      <button type="button" data-product="JB Whisky" data-id="jb" onclick="getData(this)">payer</button>
+    </div>
+    <div class="product">
+      <img src="red.jpg" alt="Red label">
+      <h3>Red label</h3>
+      <p class="price">40$</p>
+      <label for="qty-red">Quantité</label>
+      <input id="qty-red" name="Quantité"  type="number" min="1" value="1">
+      <label for="people-red">Nombre de personnes</label>
+      <input id="people-red" name="Nombre de personnes" type="number" min="1" value="1">
+      <button type="button" data-product="Red label" data-id="red" onclick="getData(this)">payer</button>
+    </div>
+    <div class="product">
+      <img src="grantis.jpg" alt="Grantis Whisky">
+      <h3>Grantis Whisky</h3>
+      <p class="price">60$</p>
+      <label for="qty-grantis">Quantité</label>
+      <input id="qty-grantis" name="Quantité"  type="number" min="1" value="1">
+      <label for="people-red">Nombre de personnes</label>
+      <input id="people-red" name="Nombre de personnes" type="number" min="1" value="1">
+      <button type="button" data-product="Grantis Whisky" data-id="grantis" onclick="getData(this)">payer</button>
+    </div>
+    <div class="product">
+      <img src="ruinard.jpg" alt="Ruinard Champagne">
+      <h3>Ruinard Champagne</h3>
+      <p class="price">150$</p>
+      <label for="qty-ruinard">Quantité</label>
+      <input id="qty-ruinard" name="Quantité"  type="number" min="1" value="1">
+      <label for="people-red">Nombre de personnes</label>
+      <input id="people-red" name="Nombre de personnes" type="number" min="1" value="1">
+      <button type="button" data-product="Ruinard Champagne" data-id="ruinard" onclick="getData(this)">payer</button>
+    </div>
+    <div class="product">
+      <img src="W.jpg" alt="Whisky W">
+      <h3>Whisky W</h3>
+      <p class="price">55$</p>
+      <label for="qty-w">Quantité</label>
+      <input id="qty-w" name="Quantité"  type="number" min="1" value="1">
+      <label for="people-red">Nombre de personnes</label>
+      <input id="people-red" name="Nombre de personnes" type="number" min="1" value="1">
+      <button type="button" data-product="Whisky W" data-id="w" onclick="getData(this)">payer</button>
+    </div>
+  </section>
+</body>
+</html>

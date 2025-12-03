@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogue - Spiritueux Premium</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/catalogue.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🍷</span>
+                    <span class="logo-text">Élégance Spiritueux</span>
+                </a>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="catalogue.html" class="nav-link">Catalogue</a>
+                    <a href="categories.html" class="nav-link">Catégories</a>
+                    <a href="sommelier.html" class="nav-link">Sélection Sommelier</a>
+                    <a href="about.html" class="nav-link">À Propos</a>
+                </div>
+
+                <div class="nav-actions">
+                    <button class="icon-btn" id="searchBtn" aria-label="Rechercher">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    <a href="dashboard.html" class="icon-btn" aria-label="Mon compte">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </a>
+                    <a href="panier.html" class="icon-btn cart-btn" aria-label="Panier">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="cart-badge" id="cartCount">0</span>
+                    </a>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Catalogue Hero -->
+    <section class="catalogue-hero">
+        <div class="container">
+            <h1 class="hero-title fade-in">Notre Collection Premium</h1>
+            <p class="hero-subtitle fade-in">Découvrez plus de 500 spiritueux d'exception</p>
+        </div>
+    </section>
+
+    <!-- Filters & Products -->
+    <section class="catalogue-section">
+        <div class="container">
+            <div class="catalogue-layout">
+                <!-- Sidebar Filters -->
+                <aside class="filters-sidebar">
+                    <div class="filter-group">
+                        <h3 class="filter-title">Type d'alcool</h3>
+                        <label class="filter-option">
+                            <input type="checkbox" value="vin" data-filter="type">
+                            <span>Vin</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" value="champagne" data-filter="type">
+                            <span>Champagne</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" value="whisky" data-filter="type">
+                            <span>Whisky</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" value="cognac" data-filter="type">
+                            <span>Cognac</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" value="rhum" data-filter="type">
+                            <span>Rhum</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" value="vodka" data-filter="type">
+                            <span>Vodka</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" value="gin" data-filter="type">
+                            <span>Gin</span>
+                        </label>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3 class="filter-title">Prix</h3>
+                        <label class="filter-option">
+                            <input type="radio" name="price" value="0-50" data-filter="price">
+                            <span>Moins de 50€</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="price" value="50-100" data-filter="price">
+                            <span>50€ - 100€</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="price" value="100-200" data-filter="price">
+                            <span>100€ - 200€</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="price" value="200-500" data-filter="price">
+                            <span>200€ - 500€</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="price" value="500+" data-filter="price">
+                            <span>Plus de 500€</span>
+                        </label>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3 class="filter-title">Région</h3>
+                        <label class="filter-option">
+                            <input type="checkbox" value="france" data-filter="region">
+                            <span>France</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" value="ecosse" data-filter="region">
+                            <span>Écosse</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" value="italie" data-filter="region">
+                            <span>Italie</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" value="japon" data-filter="region">
+                            <span>Japon</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" value="usa" data-filter="region">
+                            <span>USA</span>
+                        </label>
+                    </div>
+
+                    <button class="btn-secondary" id="reset-filters">Réinitialiser</button>
+                </aside>
+
+                <!-- Products Grid -->
+                <div class="products-area">
+                    <div class="catalogue-header">
+                        <p class="results-count"><span id="results-count">24</span> produits</p>
+                        <div class="sort-controls">
+                            <label>Trier par:</label>
+                            <select id="sort-select">
+                                <option value="featured">Recommandés</option>
+                                <option value="price-asc">Prix croissant</option>
+                                <option value="price-desc">Prix décroissant</option>
+                                <option value="name">Nom A-Z</option>
+                                <option value="rating">Meilleure note</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="products-grid" id="products-grid">
+                        <!-- Products will be loaded via JavaScript -->
+                    </div>
+
+                    <div class="pagination">
+                        <button class="pagination-btn" disabled>&laquo;</button>
+                        <button class="pagination-btn active">1</button>
+                        <button class="pagination-btn">2</button>
+                        <button class="pagination-btn">3</button>
+                        <button class="pagination-btn">4</button>
+                        <button class="pagination-btn">&raquo;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="logo-icon">🍷</span>
+                        <span class="logo-text">Élégance Spiritueux</span>
+                    </div>
+                    <p class="footer-description">
+                        Votre destination premium pour les vins et spiritueux d'exception depuis 2010.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="catalogue.html">Catalogue</a></li>
+                        <li><a href="categories.html">Catégories</a></li>
+                        <li><a href="sommelier.html">Sélection Sommelier</a></li>
+                        <li><a href="about.html">À Propos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Service Client</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Nous Contacter</a></li>
+                        <li><a href="shipping.html">Livraison</a></li>
+                        <li><a href="returns.html">Retours</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Informations</h3>
+                    <ul class="footer-links">
+                        <li><a href="legal.html">Mentions Légales</a></li>
+                        <li><a href="privacy.html">Politique de Confidentialité</a></li>
+                        <li><a href="terms.html">CGV</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Élégance Spiritueux. Tous droits réservés.</p>
+                <p class="footer-warning">L'abus d'alcool est dangereux pour la santé. À consommer avec modération.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/catalogue.js"></script>
+</body>
+</html>

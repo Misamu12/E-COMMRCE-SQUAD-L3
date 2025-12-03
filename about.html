@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos - Spiritueux Premium</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/about.css">
+</head>
+<body>
+    <!-- Header -->
+       <header id="header" class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🍷</span>
+                    <span class="logo-text">Élégance Spiritueux</span>
+                </a>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="catalogue.html" class="nav-link">Catalogue</a>
+                    <a href="categories.html" class="nav-link">Catégories</a>
+                    <a href="sommelier.html" class="nav-link">Sélection Sommelier</a>
+                    <a href="about.html" class="nav-link">À Propos</a>
+                </div>
+
+                <div class="nav-actions">
+                    <button class="icon-btn" id="searchBtn" aria-label="Rechercher">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    <a href="dashboard.html" class="icon-btn" aria-label="Mon compte">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </a>
+                    <a href="panier.html" class="icon-btn cart-btn" aria-label="Panier">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="cart-badge" id="cartCount">0</span>
+                    </a>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- About Hero -->
+    <section class="about-hero">
+        <div class="container">
+            <h1 class="hero-title fade-in">Notre Histoire</h1>
+            <p class="hero-subtitle fade-in">La passion des spiritueux d'exception depuis 1995</p>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="our-story">
+        <div class="container">
+            <div class="story-content fade-in">
+                <div class="story-text">
+                    <h2 class="gold">Une Passion Familiale</h2>
+                    <p>
+                        Fondée en 1995 par Pierre Delacroix, ÉliteSpirits est née d'une passion pour les spiritueux 
+                        d'exception et d'un désir de partager les plus belles créations avec les amateurs éclairés.
+                    </p>
+                    <p>
+                        Depuis près de 30 ans, nous parcourons le monde à la recherche des distilleries les plus 
+                        prestigieuses, des domaines viticoles d'exception et des créateurs passionnés qui élaborent 
+                        ces nectars uniques.
+                    </p>
+                    <p>
+                        Notre engagement : vous proposer uniquement des produits que nous dégustons et approuvons 
+                        personnellement. Chaque bouteille dans notre catalogue raconte une histoire, celle d'un 
+                        terroir, d'un savoir-faire ancestral et d'une quête d'excellence.
+                    </p>
+                </div>
+                <div class="story-image">
+                    <img src="/placeholder.svg?height=600&width=800" alt="Notre cave">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Nos Valeurs</h2>
+            
+            <div class="values-grid">
+                <div class="value-card fade-in" style="animation-delay: 0.1s;">
+                    <div class="value-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Excellence</h3>
+                    <p>Nous sélectionnons uniquement les spiritueux les plus raffinés et exceptionnels du monde entier.</p>
+                </div>
+
+                <div class="value-card fade-in" style="animation-delay: 0.2s;">
+                    <div class="value-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h3>Authenticité</h3>
+                    <p>Chaque produit est authentique, tracé et provient directement des maisons productrices.</p>
+                </div>
+
+                <div class="value-card fade-in" style="animation-delay: 0.3s;">
+                    <div class="value-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 16v-4M12 8h.01"></path>
+                        </svg>
+                    </div>
+                    <h3>Expertise</h3>
+                    <p>Notre équipe de sommeliers et experts vous guide dans vos choix avec passion.</p>
+                </div>
+
+                <div class="value-card fade-in" style="animation-delay: 0.4s;">
+                    <div class="value-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <h3>Service</h3>
+                    <p>Un service client premium pour une expérience d'achat exceptionnelle à chaque commande.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Notre Équipe</h2>
+            
+            <div class="team-grid">
+                <div class="team-member fade-in" style="animation-delay: 0.1s;">
+                    <div class="member-image">
+                        <img src="/placeholder.svg?height=400&width=400" alt="Pierre Delacroix">
+                    </div>
+                    <h3>Pierre Delacroix</h3>
+                    <p class="member-role">Fondateur & Directeur</p>
+                </div>
+
+                <div class="team-member fade-in" style="animation-delay: 0.2s;">
+                    <div class="member-image">
+                        <img src="/placeholder.svg?height=400&width=400" alt="Jean-Marc">
+                    </div>
+                    <h3>Jean-Marc Delacroix</h3>
+                    <p class="member-role">Sommelier en Chef</p>
+                </div>
+
+                <div class="team-member fade-in" style="animation-delay: 0.3s;">
+                    <div class="member-image">
+                        <img src="/placeholder.svg?height=400&width=400" alt="Sophie">
+                    </div>
+                    <h3>Sophie Martin</h3>
+                    <p class="member-role">Directrice Achats</p>
+                </div>
+
+                <div class="team-member fade-in" style="animation-delay: 0.4s;">
+                    <div class="member-image">
+                        <img src="/placeholder.svg?height=400&width=400" alt="Thomas">
+                    </div>
+                    <h3>Thomas Dubois</h3>
+                    <p class="member-role">Expert Spiritueux</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="contact-cta">
+        <div class="container">
+            <div class="cta-content fade-in">
+                <h2>Besoin de Conseils?</h2>
+                <p>Notre équipe d'experts est à votre disposition pour vous guider dans votre sélection</p>
+                <div class="cta-buttons">
+                    <a href="mailto:contact@elitespirits.fr" class="btn-primary">Nous Contacter</a>
+                    <a href="tel:+33123456789" class="btn-secondary">+33 1 23 45 67 89</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="logo-icon">🍷</span>
+                        <span class="logo-text">Élégance Spiritueux</span>
+                    </div>
+                    <p class="footer-description">
+                        Votre destination premium pour les vins et spiritueux d'exception depuis 2010.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="catalogue.html">Catalogue</a></li>
+                        <li><a href="categories.html">Catégories</a></li>
+                        <li><a href="sommelier.html">Sélection Sommelier</a></li>
+                        <li><a href="about.html">À Propos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Service Client</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Nous Contacter</a></li>
+                        <li><a href="shipping.html">Livraison</a></li>
+                        <li><a href="returns.html">Retours</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Informations</h3>
+                    <ul class="footer-links">
+                        <li><a href="legal.html">Mentions Légales</a></li>
+                        <li><a href="privacy.html">Politique de Confidentialité</a></li>
+                        <li><a href="terms.html">CGV</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Élégance Spiritueux. Tous droits réservés.</p>
+                <p class="footer-warning">L'abus d'alcool est dangereux pour la santé. À consommer avec modération.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>

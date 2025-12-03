@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Élégance Spiritueux - Vins & Spiritueux Premium</title>
+    <meta name="description" content="Découvrez notre sélection exclusive de vins, champagnes et spiritueux rares">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🍷</span>
+                    <span class="logo-text">Élégance Spiritueux</span>
+                </a>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="catalogue.html" class="nav-link">Catalogue</a>
+                    <a href="categories.html" class="nav-link">Catégories</a>
+                    <a href="sommelier.html" class="nav-link">Sélection Sommelier</a>
+                    <a href="about.html" class="nav-link">À Propos</a>
+                </div>
+
+                <div class="nav-actions">
+                    <button class="icon-btn" id="searchBtn" aria-label="Rechercher">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    <a href="dashboard.html" class="icon-btn" aria-label="Mon compte">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </a>
+                    <a href="panier.html" class="icon-btn cart-btn" aria-label="Panier">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="cart-badge" id="cartCount">0</span>
+                    </a>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-image">
+            <img src="" alt="Luxury Bar">
+        </div>
+        <div class="hero-overlay"></div>
+        
+        <div class="container hero-content">
+            <div class="hero-inner fade-in-up">
+                <div class="hero-badge">
+                    <svg class="icon-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M12 3v18M3 12h18M6 6l12 12M6 18L18 6"></path>
+                    </svg>
+                    <span>Collection Exclusive 2025</span>
+                </div>
+
+                <h1 class="hero-title glow-text">
+                    L'Art de la
+                    <span class="gold-text">Dégustation</span>
+                </h1>
+
+                <p class="hero-description">
+                    Découvrez notre sélection exclusive de vins, champagnes et spiritueux d'exception. 
+                    Des crus rares pour les connaisseurs exigeants.
+                </p>
+
+                <div class="hero-cta">
+                    <a href="catalogue.html" class="btn btn-primary btn-lg">
+                        Découvrir la Collection
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                    <a href="sommelier.html" class="btn btn-outline btn-lg">
+                        Sélection Sommelier
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="trust-badges">
+        <div class="container">
+            <div class="badges-grid">
+                <div class="badge-item">
+                    <div class="badge-icon">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="1" y="3" width="15" height="13"></rect>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                        </svg>
+                    </div>
+                    <div class="badge-content">
+                        <h3>Livraison Rapide</h3>
+                        <p>Sous 48h partout en France</p>
+                    </div>
+                </div>
+
+                <div class="badge-item">
+                    <div class="badge-icon">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <div class="badge-content">
+                        <h3>Paiement Sécurisé</h3>
+                        <p>Vos données protégées</p>
+                    </div>
+                </div>
+
+                <div class="badge-item">
+                    <div class="badge-icon">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="8" r="7"></circle>
+                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                        </svg>
+                    </div>
+                    <div class="badge-content">
+                        <h3>Qualité Garantie</h3>
+                        <p>Produits 100% authentiques</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="section categories-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Explorez Nos <span class="gold-text">Catégories</span>
+                </h2>
+                <p class="section-description">Une sélection premium pour chaque occasion</p>
+            </div>
+
+            <div class="categories-grid">
+                <a href="categories.html?cat=vins" class="category-card" data-aos="fade-up">
+                    <div class="category-image">
+                        <img src="ruinard.jpg" alt="Vins d'Exception">
+                    </div>
+                    <div class="category-overlay"></div>
+                    <div class="category-content">
+                        <h3 class="category-title">Vins d'Exception</h3>
+                        <p class="category-description">Découvrez notre sélection de vins rouges, blancs et rosés</p>
+                        <div class="category-link">
+                            Découvrir
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="categories.html?cat=champagne" class="category-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="category-image">
+                        <img src="ruinard.jpg" alt="Champagnes Prestige">
+                    </div>
+                    <div class="category-overlay"></div>
+                    <div class="category-content">
+                        <h3 class="category-title">Champagnes Prestige</h3>
+                        <p class="category-description">Les meilleures bulles pour vos célébrations</p>
+                        <div class="category-link">
+                            Découvrir
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="categories.html?cat=whisky" class="category-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="category-image">
+                        <img src="ruinard.jpg" alt="Whiskys Premium">
+                    </div>
+                    <div class="category-overlay"></div>
+                    <div class="category-content">
+                        <h3 class="category-title">Whiskys Premium</h3>
+                        <p class="category-description">Single malts et blends d'exception</p>
+                        <div class="category-link">
+                            Découvrir
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="categories.html?cat=spiritueux" class="category-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="category-image">
+                        <img src="ruinard.jpg" alt="Spiritueux Rares">
+                    </div>
+                    <div class="category-overlay"></div>
+                    <div class="category-content">
+                        <h3 class="category-title">Spiritueux Rares</h3>
+                        <p class="category-description">Rhum, vodka, gin, cognac et plus encore</p>
+                        <div class="category-link">
+                            Découvrir
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Sellers -->
+    <section class="section bestsellers-section">
+        <div class="container">
+            <div class="section-header-row">
+                <div>
+                    <h2 class="section-title">
+                        Les <span class="gold-text">Best-Sellers</span>
+                    </h2>
+                    <p class="section-description">Les coups de cœur de nos clients</p>
+                </div>
+                <a href="catalogue.html" class="btn btn-outline">
+                    Voir tout
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="products-grid" id="bestSellers">
+                <!-- Products will be injected by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sommelier Section -->
+    <section class="section sommelier-section">
+        <div class="container">
+            <div class="sommelier-grid">
+                <div class="sommelier-image" data-aos="fade-right">
+                    <img src="ruinard.jpg" alt="Notre Sommelier">
+                </div>
+
+                <div class="sommelier-content" data-aos="fade-left">
+                    <div class="sommelier-badge">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="8" r="7"></circle>
+                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                        </svg>
+                        <span>Expertise Reconnue</span>
+                    </div>
+
+                    <h2 class="sommelier-title">
+                        Notre <span class="gold-text">Sommelier</span><br>
+                        à Votre Service
+                    </h2>
+
+                    <p class="sommelier-description">
+                        Bénéficiez des conseils d'experts pour choisir le vin ou le spiritueux parfait pour chaque occasion.
+                        Notre sommelier sélectionne personnellement chaque bouteille de notre collection.
+                    </p>
+
+                    <ul class="sommelier-features">
+                        <li class="feature-item">
+                            <div class="feature-icon"></div>
+                            <div class="feature-content">
+                                <h4>Conseils Personnalisés</h4>
+                                <p>Recommandations adaptées à vos goûts</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon"></div>
+                            <div class="feature-content">
+                                <h4>Sélection Mensuelle</h4>
+                                <p>Découvrez nos coups de cœur du mois</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon"></div>
+                            <div class="feature-content">
+                                <h4>Accords Mets & Vins</h4>
+                                <p>Les meilleures associations culinaires</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <a href="sommelier.html" class="btn btn-primary btn-lg">
+                        Découvrir la Sélection
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="section newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <svg class="newsletter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 3v18M3 12h18M6 6l12 12M6 18L18 6"></path>
+                </svg>
+                <h2 class="newsletter-title">
+                    Rejoignez le <span class="gold-text">Club Élégance</span>
+                </h2>
+                <p class="newsletter-description">
+                    Recevez en exclusivité nos offres spéciales, nouveautés et conseils d'experts
+                </p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Votre adresse email" required class="newsletter-input">
+                    <button type="submit" class="btn btn-primary btn-lg">S'inscrire</button>
+                </form>
+                <p class="newsletter-disclaimer">
+                    En vous inscrivant, vous acceptez de recevoir nos communications. Désinscription possible à tout moment.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="logo-icon">🍷</span>
+                        <span class="logo-text">Élégance Spiritueux</span>
+                    </div>
+                    <p class="footer-description">
+                        Votre destination premium pour les vins et spiritueux d'exception depuis 2010.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="catalogue.html">Catalogue</a></li>
+                        <li><a href="categories.html">Catégories</a></li>
+                        <li><a href="sommelier.html">Sélection Sommelier</a></li>
+                        <li><a href="about.html">À Propos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Service Client</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Nous Contacter</a></li>
+                        <li><a href="shipping.html">Livraison</a></li>
+                        <li><a href="returns.html">Retours</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Informations</h3>
+                    <ul class="footer-links">
+                        <li><a href="legal.html">Mentions Légales</a></li>
+                        <li><a href="privacy.html">Politique de Confidentialité</a></li>
+                        <li><a href="terms.html">CGV</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Élégance Spiritueux. Tous droits réservés.</p>
+                <p class="footer-warning">L'abus d'alcool est dangereux pour la santé. À consommer avec modération.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>
