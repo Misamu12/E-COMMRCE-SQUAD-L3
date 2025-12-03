@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>À Propos - Spiritueux Premium</title>
+    <title>Panier - Spiritueux Premium</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="styles/about.css">
+    <link rel="stylesheet" href="styles/panier.css">
 </head>
 <body>
-    <!-- Header -->
-       <header id="header" class="header">
+   <header id="header" class="header">
         <div class="container">
             <nav class="nav">
                 <a href="index.html" class="logo">
@@ -18,7 +17,7 @@
                 </a>
                 
                 <div class="nav-links" id="navLinks">
-                     <a href="index.html" class="nav-link">Accueil</a>
+                    <a href="index.html" class="nav-link">Accueil</a>
                     <a href="catalogue.html" class="nav-link">Catalogue</a>
                     <a href="categories.html" class="nav-link">Catégories</a>
                     <a href="sommelier.html" class="nav-link">Sélection Sommelier</a>
@@ -56,149 +55,97 @@
         </div>
     </header>
 
-    <!-- About Hero -->
-    <section class="about-hero">
+    <!-- Cart Section -->
+    <section class="cart-section">
         <div class="container">
-            <h1 class="hero-title fade-in">Notre Histoire</h1>
-            <p class="hero-subtitle fade-in">La passion des spiritueux d'exception depuis 1995</p>
-        </div>
-    </section>
+            <h1 class="page-title fade-in">Votre Panier</h1>
 
-    <!-- Our Story -->
-    <section class="our-story">
-        <div class="container">
-            <div class="story-content fade-in">
-                <div class="story-text">
-                    <h2 class="gold">Une Passion Familiale</h2>
-                    <p>
-                        Fondée en 1995 par Pierre Delacroix, ÉliteSpirits est née d'une passion pour les spiritueux 
-                        d'exception et d'un désir de partager les plus belles créations avec les amateurs éclairés.
-                    </p>
-                    <p>
-                        Depuis près de 30 ans, nous parcourons le monde à la recherche des distilleries les plus 
-                        prestigieuses, des domaines viticoles d'exception et des créateurs passionnés qui élaborent 
-                        ces nectars uniques.
-                    </p>
-                    <p>
-                        Notre engagement : vous proposer uniquement des produits que nous dégustons et approuvons 
-                        personnellement. Chaque bouteille dans notre catalogue raconte une histoire, celle d'un 
-                        terroir, d'un savoir-faire ancestral et d'une quête d'excellence.
-                    </p>
-                </div>
-                <div class="story-image">
-                    <img src="public/2_9c.jpg" alt="Notre cave">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Values -->
-    <section class="values-section">
-        <div class="container">
-            <h2 class="section-title fade-in">Nos Valeurs</h2>
-            
-            <div class="values-grid">
-                <div class="value-card fade-in" style="animation-delay: 0.1s;">
-                    <div class="value-icon">
-                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                        </svg>
+            <div class="cart-layout">
+                <!-- Cart Items -->
+                <div class="cart-items">
+                    <div id="cart-items-container">
+                        <!-- Cart items will be loaded here -->
                     </div>
-                    <h3>Excellence</h3>
-                    <p>Nous sélectionnons uniquement les spiritueux les plus raffinés et exceptionnels du monde entier.</p>
+
+                    <div id="empty-cart" style="display: none;">
+                        <div class="empty-cart-message">
+                            <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            <h2>Votre panier est vide</h2>
+                            <p>Découvrez notre sélection de spiritueux d'exception</p>
+                            <a href="catalogue.html" class="btn-primary">Découvrir le catalogue</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="value-card fade-in" style="animation-delay: 0.2s;">
-                    <div class="value-icon">
-                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <!-- Cart Summary -->
+                <div class="cart-summary">
+                    <h2>Récapitulatif</h2>
+                    
+                    <div class="summary-line">
+                        <span>Sous-total</span>
+                        <span id="subtotal">0€</span>
+                    </div>
+                    
+                    <div class="summary-line">
+                        <span>Livraison</span>
+                        <span id="shipping">Gratuite</span>
+                    </div>
+
+                    <div class="promo-code">
+                        <input type="text" placeholder="Code promo" id="promo-input">
+                        <button class="btn-secondary" id="apply-promo">Appliquer</button>
+                    </div>
+
+                    <div class="summary-line discount" id="discount-line" style="display: none;">
+                        <span>Réduction</span>
+                        <span class="gold" id="discount">-0€</span>
+                    </div>
+                    
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span id="total" class="gold">0€</span>
+                    </div>
+
+                    <button class="btn-primary btn-full" id="checkout-btn">
+                        Procéder au paiement
+                    </button>
+
+                    <div class="payment-methods">
+                        <p>Moyens de paiement acceptés</p>
+                        <div class="payment-icons">
+                            <span>💳</span>
+                            <span>🏦</span>
+                            <span>📱</span>
+                        </div>
+                    </div>
+
+                    <div class="security-badge">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                         </svg>
+                        <span>Paiement 100% sécurisé</span>
                     </div>
-                    <h3>Authenticité</h3>
-                    <p>Chaque produit est authentique, tracé et provient directement des maisons productrices.</p>
-                </div>
-
-                <div class="value-card fade-in" style="animation-delay: 0.3s;">
-                    <div class="value-icon">
-                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M12 16v-4M12 8h.01"></path>
-                        </svg>
-                    </div>
-                    <h3>Expertise</h3>
-                    <p>Notre équipe de sommeliers et experts vous guide dans vos choix avec passion.</p>
-                </div>
-
-                <div class="value-card fade-in" style="animation-delay: 0.4s;">
-                    <div class="value-icon">
-                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
-                    </div>
-                    <h3>Service</h3>
-                    <p>Un service client premium pour une expérience d'achat exceptionnelle à chaque commande.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Team -->
-    <section class="team-section">
+    <!-- You May Also Like -->
+    <section class="suggestions-section" id="suggestions-section" style="display: none;">
         <div class="container">
-            <h2 class="section-title fade-in">Notre Équipe</h2>
-            
-            <div class="team-grid">
-                <div class="team-member fade-in" style="animation-delay: 0.1s;">
-                    <div class="member-image">
-                        <img src="public/asssa61.jpg" alt="Pierre Delacroix">
-                    </div>
-                    <h3>MUSAFIRI MANENO RANDY</h3>
-                    <p class="member-role">Fondateur & Directeur</p>
-                </div>
-
-                <div class="team-member fade-in" style="animation-delay: 0.2s;">
-                    <div class="member-image">
-                        <img src="public/asssa61.jpg" alt="Jean-Marc">
-                    </div>
-                    <h3>PAYSAYO MALIAKO CEASAR</h3>
-                    <p class="member-role">Sommelier en Chef</p>
-                </div>
-
-                <div class="team-member fade-in" style="animation-delay: 0.3s;">
-                    <div class="member-image">
-                        <img src="public/asssa61.jpg" alt="Sophie">
-                    </div>
-                    <h3>BUANA KANINDA SAMUEL </h3>
-                    <p class="member-role">Directrice Achats</p>
-                </div>
-
-                <div class="team-member fade-in" style="animation-delay: 0.4s;">
-                    <div class="member-image">
-                        <img src="public/asssa61.jpg" alt="Thomas">
-                    </div>
-                    <h3>PRATRICK MISAMU</h3>
-                    <p class="member-role">Expert Spiritueux</p>
-                </div>
+            <h2 class="section-title">Vous aimerez aussi</h2>
+            <div class="products-grid" id="suggestions-grid">
+                <!-- Suggestions will be loaded here -->
             </div>
         </div>
     </section>
 
-    <!-- Contact CTA -->
-    <section class="contact-cta">
-        <div class="container">
-            <div class="cta-content fade-in">
-                <h2>Besoin de Conseils?</h2>
-                <p>Notre équipe d'experts est à votre disposition pour vous guider dans votre sélection</p>
-                <div class="cta-buttons">
-                    <a href="mailto:contact@elitespirits.fr" class="btn-primary">Nous Contacter</a>
-                    <a href="tel:+33123456789" class="btn-secondary">+243 00 00 00 00 00</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-   <!-- Footer -->
+    <!-- Footer -->
+       <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -269,7 +216,7 @@
         </div>
     </footer>
 
-
     <script src="js/main.js"></script>
+    <script src="js/panier.js"></script>
 </body>
 </html>

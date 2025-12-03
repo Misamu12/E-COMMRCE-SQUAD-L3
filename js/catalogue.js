@@ -7,8 +7,10 @@ const allProducts = [
     region: "france",
     price: 850,
     rating: 4.9,
-    image: "/chateau-margaux-wine-bottle.png",
+    image: "public/chateau-margaux-wine-bottle.png",
     description: "Grand Cru Classé",
+    alcohol_percent: 13.5,
+    category: "Vin Rouge",
   },
   {
     id: 2,
@@ -17,8 +19,10 @@ const allProducts = [
     region: "france",
     price: 280,
     rating: 4.8,
-    image: "/dom-perignon-champagne-bottle-gold.jpg",
+    image: "public/dom-perignon-champagne-bottle-gold.jpg",
     description: "Champagne Millésimé",
+    alcohol_percent: 12.5,
+    category: "Champagne",
   },
   {
     id: 3,
@@ -27,8 +31,10 @@ const allProducts = [
     region: "ecosse",
     price: 2400,
     rating: 5.0,
-    image: "/macallan-25-whisky-bottle.jpg",
+    image: "public/macallan-25-whisky-bottle.jpg",
     description: "Single Malt Exceptionnel",
+    alcohol_percent: 43,
+    category: "Whisky",
   },
   {
     id: 4,
@@ -37,7 +43,7 @@ const allProducts = [
     region: "france",
     price: 1200,
     rating: 4.9,
-    image: "/hennessy-paradis-cognac-bottle.jpg",
+    image: "public/hennessy-paradis-cognac-bottle.jpg",
     description: "Cognac d'Exception",
   },
   {
@@ -47,7 +53,7 @@ const allProducts = [
     region: "japon",
     price: 1800,
     rating: 4.9,
-    image: "/hibiki-21-japanese-whisky.jpg",
+    image: "public/hibiki-21-japanese-whisky.jpg",
     description: "Whisky Japonais Premium",
   },
   {
@@ -57,7 +63,7 @@ const allProducts = [
     region: "france",
     price: 95,
     rating: 4.5,
-    image: "/grey-goose-vodka.png",
+    image: "public/grey-goose-vodka.png",
     description: "Vodka Premium",
   },
   {
@@ -67,7 +73,7 @@ const allProducts = [
     region: "france",
     price: 65,
     rating: 4.7,
-    image: "/monkey-47-gin-bottle.jpg",
+    image: "public/monkey-47-gin-bottle.jpg",
     description: "Gin Artisanal",
   },
   {
@@ -77,7 +83,7 @@ const allProducts = [
     region: "france",
     price: 78,
     rating: 4.6,
-    image: "/diplomatico-rum-bottle-dark.jpg",
+    image: "public/diplomatico-rum-bottle-dark.jpg",
     description: "Rhum Vénézuélien",
   },
   {
@@ -87,7 +93,7 @@ const allProducts = [
     region: "france",
     price: 3200,
     rating: 5.0,
-    image: "/petrus-wine-bottle-bordeaux.jpg",
+    image: "public/petrus-wine-bottle-bordeaux.jpg",
     description: "Pomerol Mythique",
   },
   {
@@ -97,7 +103,7 @@ const allProducts = [
     region: "france",
     price: 320,
     rating: 4.8,
-    image: "/krug-champagne-bottle-luxury.jpg",
+    image: "public/krug-champagne-bottle-luxury.jpg",
     description: "Champagne Prestige",
   },
   {
@@ -107,7 +113,7 @@ const allProducts = [
     region: "ecosse",
     price: 950,
     rating: 4.8,
-    image: "/glenfiddich-30-whisky-bottle.jpg",
+    image: "public/glenfiddich-30-whisky-bottle.jpg",
     description: "Single Malt Rare",
   },
   {
@@ -117,7 +123,7 @@ const allProducts = [
     region: "france",
     price: 3800,
     rating: 5.0,
-    image: "/louis-xiii-cognac-crystal-bottle.jpg",
+    image: "public/louis-xiii-cognac-crystal-bottle.jpg",
     description: "Le Roi des Cognacs",
   },
   {
@@ -127,7 +133,7 @@ const allProducts = [
     region: "italie",
     price: 180,
     rating: 4.7,
-    image: "/barolo-wine-bottle-italian.jpg",
+    image: "public/barolo-wine-bottle-italian.jpg",
     description: "Roi des Vins Italiens",
   },
   {
@@ -137,7 +143,7 @@ const allProducts = [
     region: "france",
     price: 120,
     rating: 4.6,
-    image: "/belvedere-vodka.png",
+    image: "public/belvedere-vodka.png",
     description: "Vodka Polonaise",
   },
   {
@@ -147,7 +153,7 @@ const allProducts = [
     region: "ecosse",
     price: 55,
     rating: 4.5,
-    image: "/hendricks-orbium-gin-bottle.jpg",
+    image: "public/hendricks-orbium-gin-bottle.jpg",
     description: "Gin Écossais",
   },
   {
@@ -157,7 +163,7 @@ const allProducts = [
     region: "france",
     price: 180,
     rating: 4.8,
-    image: "/zacapa-xo-rum-bottle.jpg",
+    image: "public/zacapa-xo-rum-bottle.jpg",
     description: "Rhum Guatémaltèque",
   },
   {
@@ -167,7 +173,7 @@ const allProducts = [
     region: "usa",
     price: 420,
     rating: 4.8,
-    image: "/opus-one-wine-bottle-napa-valley.jpg",
+    image: "public/opus-one-wine-bottle-napa-valley.jpg",
     description: "Napa Valley Prestige",
   },
   {
@@ -177,7 +183,7 @@ const allProducts = [
     region: "france",
     price: 195,
     rating: 4.7,
-    image: "/bollinger-champagne-bottle.jpg",
+    image: "public/bollinger-champagne-bottle.jpg",
     description: "Champagne d'Excellence",
   },
   {
@@ -187,7 +193,7 @@ const allProducts = [
     region: "ecosse",
     price: 110,
     rating: 4.7,
-    image: "/placeholder.svg?height=400&width=300",
+    image: "public/lugavulun6659.jpg",
     description: "Islay Tourbé",
   },
   {
@@ -197,7 +203,7 @@ const allProducts = [
     region: "france",
     price: 240,
     rating: 4.6,
-    image: "/placeholder.svg?height=400&width=300",
+    image: "public/martel65.jpg",
     description: "Cognac Légendaire",
   },
   {
@@ -207,7 +213,7 @@ const allProducts = [
     region: "japon",
     price: 1600,
     rating: 4.9,
-    image: "/placeholder.svg?height=400&width=300",
+    image: "public/yamazakib479.jpg",
     description: "Single Malt Japonais",
   },
   {
@@ -217,7 +223,7 @@ const allProducts = [
     region: "france",
     price: 75,
     rating: 4.4,
-    image: "/placeholder.svg?height=400&width=300",
+    image: "public/black_raberi1.jpg",
     description: "Vodka Française",
   },
   {
@@ -227,7 +233,7 @@ const allProducts = [
     region: "ecosse",
     price: 48,
     rating: 4.6,
-    image: "/placeholder.svg?height=400&width=300",
+    image: "public/botaniste0.jpg",
     description: "Gin Islay Botanique",
   },
   {
@@ -237,7 +243,7 @@ const allProducts = [
     region: "france",
     price: 95,
     rating: 4.5,
-    image: "/placeholder.svg?height=400&width=300",
+    image: "public/mount_xo.jpg",
     description: "Rhum Barbade Premium",
   },
 ]
@@ -276,6 +282,10 @@ function renderProducts(products) {
             <div class="product-info">
                 <h3 class="product-name">${product.name}</h3>
                 <p class="product-description">${product.description}</p>
+                <div class="product-details">
+                    <span class="product-category">${product.category || 'Non spécifié'}</span>
+                    <span class="product-alcohol">${product.alcohol_percent ? product.alcohol_percent + '%' : 'N/A'}</span>
+                </div>
                 <div class="product-rating">
                     ${"★".repeat(Math.floor(product.rating))}${"☆".repeat(5 - Math.floor(product.rating))}
                     <span>${product.rating}</span>

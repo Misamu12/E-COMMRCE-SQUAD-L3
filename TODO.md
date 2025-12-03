@@ -1,6 +1,9 @@
-- [x] Update pages.html: Add onclick="addToCart(this)" to all product buttons
-- [x] Update controllers.js: Define addToCart function and remove jQuery click event listener
-- [ ] Add input for number of people to each product in pages.html
-- [ ] Modify getData function in controllers.js to collect data from each product (quantity and people) and log to console
-- [ ] Add a button to call getData function
-- [ ] Test the page in browser to verify functionality
+# TODO: Implement Register and Login Functionality
+
+## Tasks
+- [ ] Create register.html page with registration form
+- [x] Create login.html page with login form
+- [ ] Create js/auth.js for authentication logic (register, login, logout, session management)
+- [ ] Update header navigation in all pages to show login/register or dashboard/logout based on auth state
+- [ ] Update dashboard.html to redirect to login if not authenticated
+- [x] Test the authentication flow

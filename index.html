@@ -9,6 +9,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .product-image {
+            position: relative;
+            width: 100%;
+            height: 360px;
+            background: var(--color-card);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -21,6 +33,7 @@
                 </a>
                 
                 <div class="nav-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Accueil</a>
                     <a href="catalogue.html" class="nav-link">Catalogue</a>
                     <a href="categories.html" class="nav-link">Catégories</a>
                     <a href="sommelier.html" class="nav-link">Sélection Sommelier</a>
@@ -61,7 +74,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-image">
-            <img src="" alt="Luxury Bar">
+            <img src="public/luxury-bar-wine-bottles-ambient-lighting-golden.jpg" alt="Luxury Bar">
         </div>
         <div class="hero-overlay"></div>
         
@@ -163,7 +176,7 @@
             <div class="categories-grid">
                 <a href="categories.html?cat=vins" class="category-card" data-aos="fade-up">
                     <div class="category-image">
-                        <img src="ruinard.jpg" alt="Vins d'Exception">
+                        <img src="public/wine-bottles-elegant-lighting.jpg" alt="Vins d'Exception">
                     </div>
                     <div class="category-overlay"></div>
                     <div class="category-content">
@@ -180,7 +193,7 @@
 
                 <a href="categories.html?cat=champagne" class="category-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="category-image">
-                        <img src="ruinard.jpg" alt="Champagnes Prestige">
+                        <img src="public/champagne-bottles-luxury-golden.jpg" alt="Champagnes Prestige">
                     </div>
                     <div class="category-overlay"></div>
                     <div class="category-content">
@@ -197,7 +210,7 @@
 
                 <a href="categories.html?cat=whisky" class="category-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="category-image">
-                        <img src="ruinard.jpg" alt="Whiskys Premium">
+                        <img src="public/whisky-bottles-dark-premium.jpg" alt="Whiskys Premium">
                     </div>
                     <div class="category-overlay"></div>
                     <div class="category-content">
@@ -214,7 +227,7 @@
 
                 <a href="categories.html?cat=spiritueux" class="category-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="category-image">
-                        <img src="ruinard.jpg" alt="Spiritueux Rares">
+                        <img src="public/spirits-bottles-collection-luxury.jpg" alt="Spiritueux Rares">
                     </div>
                     <div class="category-overlay"></div>
                     <div class="category-content">
@@ -261,7 +274,7 @@
         <div class="container">
             <div class="sommelier-grid">
                 <div class="sommelier-image" data-aos="fade-right">
-                    <img src="ruinard.jpg" alt="Notre Sommelier">
+                    <img src="public/asssa61.jpg" alt="Notre Sommelier">
                 </div>
 
                 <div class="sommelier-content" data-aos="fade-left">
@@ -414,6 +427,7 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
     <script src="js/animations.js"></script>
 </body>
 </html>

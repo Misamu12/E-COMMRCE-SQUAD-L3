@@ -6,7 +6,7 @@ const bestSellersData = [
     category: "Bordeaux",
     price: 450,
     originalPrice: 520,
-    image: "ruinard.jpg",
+    image: "public/bordeaux-wine-bottle-elegant.jpg",
     rating: 4.9,
     reviews: 234,
     badge: "Best-Seller",
@@ -17,7 +17,7 @@ const bestSellersData = [
     category: "Champagne",
     price: 280,
     originalPrice: null,
-    image: "ruinard.jpg",
+    image: "public/dom-perignon-champagne-bottle.jpg",
     rating: 5.0,
     reviews: 189,
     badge: "Exclusif",
@@ -28,7 +28,7 @@ const bestSellersData = [
     category: "Whisky",
     price: 380,
     originalPrice: null,
-    image: "ruinard.jpg",
+    image: "public/macallan-whisky-bottle-premium.jpg",
     rating: 4.8,
     reviews: 156,
     badge: null,
@@ -39,15 +39,15 @@ const bestSellersData = [
     category: "Cognac",
     price: 220,
     originalPrice: 260,
-    image: "ruinard.jpg",
+    image: "public/hennessy-xo-cognac-bottle.jpg",
     rating: 4.7,
     reviews: 198,
     badge: "Promo",
   },
 ]
 
-// Cart management
-const cart = JSON.parse(localStorage.getItem("cart")) || []
+// Cart management - Stockage sous forme de tableau JSON
+let cart = JSON.parse(localStorage.getItem("cart")) || []
 
 function updateCartCount() {
   const cartCount = document.getElementById("cartCount")
@@ -66,12 +66,16 @@ function addToCart(productId) {
   if (existingItem) {
     existingItem.quantity += 1
   } else {
-    cart.push({ ...product, quantity: 1 })
+    cart.push({ id: productId, quantity: 1 })
   }
 
   localStorage.setItem("cart", JSON.stringify(cart))
   updateCartCount()
   showNotification("Produit ajouté au panier !")
+
+  // Afficher le panier dans la console
+  console.log(" Panier mis à jour:", cart)
+  console.log(" Nombre total d'articles:", cart.reduce((sum, item) => sum + item.quantity, 0))
 }
 
 function showNotification(message) {

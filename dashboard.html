@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Compte - Premium Spirits</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🍷</span>
+                    <span class="logo-text">Élégance Spiritueux</span>
+                </a>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Accueil</a>
+                    <a href="catalogue.html" class="nav-link">Catalogue</a>
+                    <a href="categories.html" class="nav-link">Catégories</a>
+                    <a href="sommelier.html" class="nav-link">Sélection Sommelier</a>
+                    <a href="about.html" class="nav-link">À Propos</a>
+                </div>
+
+                <div class="nav-actions">
+                    <button class="icon-btn" id="searchBtn" aria-label="Rechercher">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    <a href="dashboard.html" class="icon-btn" aria-label="Mon compte">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </a>
+                    <a href="panier.html" class="icon-btn cart-btn" aria-label="Panier">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="cart-badge" id="cartCount">0</span>
+                    </a>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- Dashboard Hero -->
+    <section class="dashboard-hero">
+        <div class="container">
+            <h1 class="fade-in">Mon Compte</h1>
+            <p class="fade-in">Gérez vos commandes et vos préférences</p>
+        </div>
+    </section>
+
+    <!-- Dashboard Content -->
+    <section class="dashboard-section">
+        <div class="container">
+            <div class="dashboard-layout">
+                <!-- Sidebar Navigation -->
+                <aside class="dashboard-sidebar">
+                    <div class="user-profile">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="user-info">
+                            <h3 id="userName">Mufasa D king</h3>
+                            <p class="user-email">Mufasa D king@email.com</p>
+                        </div>
+                    </div>
+
+                    <nav class="dashboard-nav">
+                        <button class="nav-item active" data-tab="overview">
+                            <i class="fas fa-home"></i>
+                            <span>Aperçu</span>
+                        </button>
+                        <button class="nav-item" data-tab="orders">
+                            <i class="fas fa-box"></i>
+                            <span>Mes Commandes</span>
+                        </button>
+                        <button class="nav-item" data-tab="wishlist">
+                            <i class="fas fa-heart"></i>
+                            <span>Mes Favoris</span>
+                        </button>
+                        <button class="nav-item" data-tab="addresses">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Adresses</span>
+                        </button>
+                        <button class="nav-item" data-tab="loyalty">
+                            <i class="fas fa-star"></i>
+                            <span>Programme Fidélité</span>
+                        </button>
+                        <button class="nav-item" data-tab="profile">
+                            <i class="fas fa-user-cog"></i>
+                            <span>Mon Profil</span>
+                        </button>
+                        <button class="nav-item logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Déconnexion</span>
+                        </button>
+                    </nav>
+                </aside>
+
+                <!-- Main Content -->
+                <main class="dashboard-main">
+                    <!-- Overview Tab -->
+                    <div class="tab-content active" id="overview">
+                        <h2 class="section-title">Bienvenue, <span class="gold">Mufasa D king</span></h2>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon orders">
+                                    <i class="fas fa-box"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3>12</h3>
+                                    <p>Commandes</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon wishlist">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3>8</h3>
+                                    <p>Favoris</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon points">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3>2,450</h3>
+                                    <p>Points Fidélité</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon spent">
+                                    <i class="fas fa-euro-sign"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3>3,890€</h3>
+                                    <p>Total Dépensé</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recent-orders">
+                            <h3>Commandes Récentes</h3>
+                            <div class="orders-list" id="recentOrders">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Orders Tab -->
+                    <div class="tab-content" id="orders">
+                        <h2 class="section-title">Mes <span class="gold">Commandes</span></h2>
+                        
+                        <div class="orders-filter">
+                            <button class="filter-btn active" data-filter="all">Toutes</button>
+                            <button class="filter-btn" data-filter="pending">En cours</button>
+                            <button class="filter-btn" data-filter="delivered">Livrées</button>
+                            <button class="filter-btn" data-filter="cancelled">Annulées</button>
+                        </div>
+
+                        <div class="orders-list full" id="allOrders">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Wishlist Tab -->
+                    <div class="tab-content" id="wishlist">
+                        <h2 class="section-title">Mes <span class="gold">Favoris</span></h2>
+                        
+                        <div class="wishlist-grid" id="wishlistGrid">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Addresses Tab -->
+                    <div class="tab-content" id="addresses">
+                        <h2 class="section-title">Mes <span class="gold">Adresses</span></h2>
+                        
+                        <button class="btn-primary add-address-btn">
+                            <i class="fas fa-plus"></i> Ajouter une adresse
+                        </button>
+
+                        <div class="addresses-grid" id="addressesGrid">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Loyalty Tab -->
+                    <div class="tab-content" id="loyalty">
+                        <h2 class="section-title">Programme <span class="gold">Fidélité</span></h2>
+                        
+                        <div class="loyalty-card">
+                            <div class="loyalty-header">
+                                <h3>Membre Gold</h3>
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="loyalty-points">
+                                <p>Vos points</p>
+                                <h2>2,450 <span>points</span></h2>
+                            </div>
+                            <div class="loyalty-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 65%"></div>
+                                </div>
+                                <p>Plus que 550 points pour atteindre le niveau Platinum</p>
+                            </div>
+                        </div>
+
+                        <div class="rewards-section">
+                            <h3>Récompenses Disponibles</h3>
+                            <div class="rewards-grid">
+                                <div class="reward-card">
+                                    <i class="fas fa-gift"></i>
+                                    <h4>Réduction 10€</h4>
+                                    <p>500 points</p>
+                                    <button class="btn-secondary">Échanger</button>
+                                </div>
+                                <div class="reward-card">
+                                    <i class="fas fa-shipping-fast"></i>
+                                    <h4>Livraison Gratuite</h4>
+                                    <p>300 points</p>
+                                    <button class="btn-secondary">Échanger</button>
+                                </div>
+                                <div class="reward-card">
+                                    <i class="fas fa-percent"></i>
+                                    <h4>-15% sur tout</h4>
+                                    <p>1000 points</p>
+                                    <button class="btn-secondary">Échanger</button>
+                                </div>
+                                <div class="reward-card locked">
+                                    <i class="fas fa-lock"></i>
+                                    <h4>Bouteille Offerte</h4>
+                                    <p>3000 points</p>
+                                    <button class="btn-secondary" disabled>Bientôt</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile Tab -->
+                    <div class="tab-content" id="profile">
+                        <h2 class="section-title">Mon <span class="gold">Profil</span></h2>
+                        
+                        <form class="profile-form" id="profileForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Prénom</label>
+                                    <input type="text" value="Jean" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nom</label>
+                                    <input type="text" value="Dupont" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" value="jean.dupont@email.com" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Téléphone</label>
+                                <input type="tel" value="+33 6 12 34 56 78" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Date de naissance</label>
+                                <input type="date" value="1985-06-15">
+                            </div>
+
+                            <h3 class="form-section-title">Changer le mot de passe</h3>
+                            
+                            <div class="form-group">
+                                <label>Mot de passe actuel</label>
+                                <input type="password" placeholder="••••••••">
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Nouveau mot de passe</label>
+                                    <input type="password" placeholder="••••••••">
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirmer le mot de passe</label>
+                                    <input type="password" placeholder="••••••••">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-save"></i> Enregistrer les modifications
+                            </button>
+                        </form>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+   <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="logo-icon">🍷</span>
+                        <span class="logo-text">Élégance Spiritueux</span>
+                    </div>
+                    <p class="footer-description">
+                        Votre destination premium pour les vins et spiritueux d'exception depuis 2010.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="catalogue.html">Catalogue</a></li>
+                        <li><a href="categories.html">Catégories</a></li>
+                        <li><a href="sommelier.html">Sélection Sommelier</a></li>
+                        <li><a href="about.html">À Propos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Service Client</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Nous Contacter</a></li>
+                        <li><a href="shipping.html">Livraison</a></li>
+                        <li><a href="returns.html">Retours</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Informations</h3>
+                    <ul class="footer-links">
+                        <li><a href="legal.html">Mentions Légales</a></li>
+                        <li><a href="privacy.html">Politique de Confidentialité</a></li>
+                        <li><a href="terms.html">CGV</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Élégance Spiritueux. Tous droits réservés.</p>
+                <p class="footer-warning">L'abus d'alcool est dangereux pour la santé. À consommer avec modération.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Château Margaux 2015 - Premium Spirits</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/produit.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🍷</span>
+                    <span class="logo-text">Élégance Spiritueux</span>
+                </a>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Accueil</a>
+                    <a href="catalogue.html" class="nav-link">Catalogue</a>
+                    <a href="categories.html" class="nav-link">Catégories</a>
+                    <a href="sommelier.html" class="nav-link">Sélection Sommelier</a>
+                    <a href="about.html" class="nav-link">À Propos</a>
+                </div>
+
+                <div class="nav-actions">
+                    <button class="icon-btn" id="searchBtn" aria-label="Rechercher">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    <a href="dashboard.html" class="icon-btn" aria-label="Mon compte">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </a>
+                    <a href="panier.html" class="icon-btn cart-btn" aria-label="Panier">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="cart-badge" id="cartCount">0</span>
+                    </a>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Accueil</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="categories.html">Vins</a>
+            <i class="fas fa-chevron-right"></i>
+            <span id="breadcrumbProduct">Château Margaux 2015</span>
+        </div>
+    </section>
+
+    <!-- Product Detail -->
+    <section class="product-detail">
+        <div class="container">
+            <div class="product-layout">
+                <!-- Product Gallery -->
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img id="mainProductImage" src="/placeholder.svg?height=600&width=400" alt="Product">
+                        <button class="wishlist-float" id="wishlistProductBtn">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="thumbnail-images">
+                        <img src="public/4_4e.jpg" alt="View 1" class="thumbnail active">
+                        <img src="public/1_8.jpg" alt="View 2" class="thumbnail">
+                        <img src="public/2_9c.jpg" alt="View 3" class="thumbnail">
+                        <img src="public/3_b.jpg" alt="View 4" class="thumbnail">
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="product-info">
+                    <div class="product-badges">
+                        <span class="badge-premium">Premium</span>
+                        <span class="badge-stock">En stock</span>
+                    </div>
+                    
+                    <h1 class="product-title" id="productTitle">Château Margaux 2015</h1>
+                    
+                    <div class="product-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="rating-text">4.8 (127 avis)</span>
+                    </div>
+
+                    <div class="product-price">
+                        <span class="current-price" id="productPrice">890€</span>
+                        <span class="original-price">950€</span>
+                        <span class="discount">-6%</span>
+                    </div>
+
+                    <p class="product-description" id="productDescription">
+                        Un grand cru exceptionnel de Bordeaux. Ce millésime 2015 offre une complexité aromatique remarquable avec des notes de fruits noirs, de violette et d'épices douces. Élevé 18 mois en barriques de chêne français.
+                    </p>
+
+                    <!-- Technical Info -->
+                    <div class="technical-info">
+                        <div class="tech-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <span class="tech-label">Origine</span>
+                                <span class="tech-value">Bordeaux, France</span>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-wine-bottle"></i>
+                            <div>
+                                <span class="tech-label">Volume</span>
+                                <span class="tech-value">750 ml</span>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-percentage"></i>
+                            <div>
+                                <span class="tech-label">Alcool</span>
+                                <span class="tech-value">13.5%</span>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div>
+                                <span class="tech-label">Millésime</span>
+                                <span class="tech-value">2015</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quantity & Cart -->
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <button class="qty-btn" id="qtyMinus">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <input type="number" class="qty-input" id="qtyInput" value="1" min="1" max="10">
+                            <button class="qty-btn" id="qtyPlus">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <button class="btn-add-cart" id="addToCartBtn">
+                            <i class="fas fa-shopping-cart"></i>
+                            Ajouter au panier
+                        </button>
+                    </div>
+
+                    <!-- Additional Actions -->
+                    <div class="secondary-actions">
+                        <button class="btn-secondary">
+                            <i class="fas fa-gift"></i>
+                            Offrir en cadeau
+                        </button>
+                        <button class="btn-secondary">
+                            <i class="fas fa-share-alt"></i>
+                            Partager
+                        </button>
+                    </div>
+
+                    <!-- Delivery Info -->
+                    <div class="delivery-info">
+                        <div class="delivery-item">
+                            <i class="fas fa-truck"></i>
+                            <span>Livraison gratuite dès 200€</span>
+                        </div>
+                        <div class="delivery-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Paiement 100% sécurisé</span>
+                        </div>
+                        <div class="delivery-item">
+                            <i class="fas fa-undo"></i>
+                            <span>Retour sous 14 jours</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tasting Notes -->
+    <section class="tasting-notes">
+        <div class="container">
+            <h2 class="section-title">Notes de Dégustation</h2>
+            <div class="tasting-grid">
+                <div class="tasting-card fade-in">
+                    <div class="tasting-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Visuel</h3>
+                    <p>Robe pourpre intense aux reflets grenat, brillante et profonde.</p>
+                </div>
+                <div class="tasting-card fade-in">
+                    <div class="tasting-icon">
+                        <i class="fas fa-nose"></i>
+                    </div>
+                    <h3>Nez</h3>
+                    <p>Bouquet complexe de fruits noirs, cassis, violette, notes épicées et toastées.</p>
+                </div>
+                <div class="tasting-card fade-in">
+                    <div class="tasting-icon">
+                        <i class="fas fa-wine-glass"></i>
+                    </div>
+                    <h3>Bouche</h3>
+                    <p>Attaque puissante, tanins soyeux, finale longue et élégante avec une belle fraîcheur.</p>
+                </div>
+                <div class="tasting-card fade-in">
+                    <div class="tasting-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Accords</h3>
+                    <p>Viandes rouges grillées, gibier, agneau confit, fromages affinés.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Related Products -->
+    <section class="related-products">
+        <div class="container">
+            <h2 class="section-title">Vous Aimerez Aussi</h2>
+            <div class="products-grid" id="relatedProducts">
+                <!-- Products will be loaded here by JS -->
+            </div>
+        </div>
+    </section>
+
+      <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="logo-icon">🍷</span>
+                        <span class="logo-text">Élégance Spiritueux</span>
+                    </div>
+                    <p class="footer-description">
+                        Votre destination premium pour les vins et spiritueux d'exception depuis 2010.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="catalogue.html">Catalogue</a></li>
+                        <li><a href="categories.html">Catégories</a></li>
+                        <li><a href="sommelier.html">Sélection Sommelier</a></li>
+                        <li><a href="about.html">À Propos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Service Client</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Nous Contacter</a></li>
+                        <li><a href="shipping.html">Livraison</a></li>
+                        <li><a href="returns.html">Retours</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-title">Informations</h3>
+                    <ul class="footer-links">
+                        <li><a href="legal.html">Mentions Légales</a></li>
+                        <li><a href="privacy.html">Politique de Confidentialité</a></li>
+                        <li><a href="terms.html">CGV</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Élégance Spiritueux. Tous droits réservés.</p>
+                <p class="footer-warning">L'abus d'alcool est dangereux pour la santé. À consommer avec modération.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Produit ajouté au panier</span>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/produit.js"></script>
+</body>
+</html>
