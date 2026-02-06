@@ -230,7 +230,25 @@ if (newsletterForm) {
 }
 
 // Initialize
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  if (typeof api !== 'undefined' && api.getProduits) {
+    try {
+      const prods = await api.getProduits()
+      if (prods && prods.length) {
+        bestSellersData = prods.slice(0, 8).map(p => ({
+          id: String(p.id),
+          name: p.name,
+          category: p.category || '',
+          price: p.price,
+          originalPrice: null,
+          image: p.image,
+          rating: p.rating || 4.5,
+          reviews: 0,
+          badge: null
+        }))
+      }
+    } catch (e) { console.warn('API non disponible, données statiques utilisées') }
+  }
   renderBestSellers()
   updateCartCount()
 })
