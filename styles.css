@@ -296,6 +296,7 @@ button {
 }
 
 .btn-primary {
+  
   background: var(--color-gold);
   color: var(--color-background);
 }

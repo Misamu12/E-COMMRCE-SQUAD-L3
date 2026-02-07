@@ -108,3 +108,20 @@
     font-size: 2rem;
   }
 }
+
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 9999px;
+  color: var(--color-gold);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: var(--spacing-md);
+  background: var(--color-gold);
+  color: var(--color-background);
+}

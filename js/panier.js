@@ -75,8 +75,8 @@ const products = [
 
 document.addEventListener("DOMContentLoaded", () => {
   // Afficher le panier dans la console au chargement
-  console.log("🛒 Panier chargé depuis localStorage:", cart)
-  console.log("📊 Nombre total d'articles:", cart.reduce((sum, item) => sum + item.quantity, 0))
+  console.log(" Panier chargé depuis localStorage:", cart)
+  console.log(" Nombre total d'articles:", cart.reduce((sum, item) => sum + item.quantity, 0))
 
   renderCart()
   updateCartSummary()
@@ -127,9 +127,9 @@ function renderCart() {
                 <h3 class="item-name">${product.name}</h3>
                 <p class="item-category">${product.category}</p>
                 <div class="item-pricing">
-                    <span class="item-unit-price">${product.price}€</span>
+                    <span class="item-unit-price">${product.price}fc</span>
                     <span class="item-quantity">× ${item.quantity}</span>
-                    <span class="item-total-price">${itemTotal}€</span>
+                    <span class="item-total-price">${itemTotal}fc</span>
                 </div>
             </div>
             <div class="item-actions">
@@ -167,8 +167,8 @@ function updateQuantity(productId, change) {
   updateCartCount()
 
   // Afficher le panier dans la console après modification
-  console.log("🛒 Quantité mise à jour pour produit", productId, ":", cart)
-  console.log("📊 Nombre total d'articles:", cart.reduce((sum, item) => sum + item.quantity, 0))
+  console.log(" Quantité mise à jour pour produit", productId, ":", cart)
+  console.log(" Nombre total d'articles:", cart.reduce((sum, item) => sum + item.quantity, 0))
 }
 
 function updateCartSummary() {
@@ -184,9 +184,9 @@ function updateCartSummary() {
   const shipping = subtotal > 200 ? 0 : 15
   const total = subtotal + shipping
 
-  document.getElementById("subtotal").textContent = subtotal.toFixed(2) + "€"
-  document.getElementById("shipping").textContent = shipping === 0 ? "Gratuite" : shipping + "€"
-  document.getElementById("total").textContent = total.toFixed(2) + "€"
+  document.getElementById("subtotal").textContent = subtotal.toFixed(2) + "fc"
+  document.getElementById("shipping").textContent = shipping === 0 ? "Gratuite" : shipping + "fc"
+  document.getElementById("total").textContent = total.toFixed(2) + "fc"
 }
 
 function applyPromoCode() {
@@ -236,7 +236,7 @@ function loadSuggestions() {
                     <span>${product.rating}</span>
                 </div>
                 <div class="product-footer">
-                    <span class="product-price">${product.price}€</span>
+                    <span class="product-price">${product.price}fc</span>
                     <button class="btn-add-cart" onclick="addToCart(${product.id})">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="9" cy="21" r="1"></circle>
