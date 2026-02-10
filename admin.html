@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - Élégance Spiritueux</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header id="header" class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo"><span class="logo-icon">🍷</span><span class="logo-text">Élégance Spiritueux</span></a>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Accueil</a>
+                    <a href="catalogue.html" class="nav-link">Catalogue</a>
+                    <a href="dashboard.html" class="nav-link">Mon Compte</a>
+                    <a href="admin.html" class="nav-link active">Admin</a>
+                </div>
+                <div class="nav-actions">
+                    <a href="dashboard.html" class="icon-btn" aria-label="Mon compte"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="dashboard-hero">
+        <div class="container">
+            <h1>Administration</h1>
+            <p>Gestion du site e-commerce</p>
+        </div>
+    </section>
+
+    <section class="dashboard-section">
+        <div class="container">
+            <div class="dashboard-layout">
+                <aside class="dashboard-sidebar">
+                    <div class="user-profile">
+                        <div class="user-avatar"><i class="fas fa-shield-alt"></i></div>
+                        <div class="user-info">
+                            <h3 id="adminUserName">Admin</h3>
+                            <p class="user-email" id="adminUserEmail">-</p>
+                        </div>
+                    </div>
+                    <nav class="dashboard-nav">
+                        <button class="nav-item active" data-tab="stats"><i class="fas fa-chart-bar"></i><span>Tableau de bord</span></button>
+                        <button class="nav-item" data-tab="users"><i class="fas fa-users"></i><span>Utilisateurs</span></button>
+                        <button class="nav-item" data-tab="orders"><i class="fas fa-box"></i><span>Commandes</span></button>
+                        <button class="nav-item" data-tab="produits"><i class="fas fa-wine-bottle"></i><span>Produits</span></button>
+                        <button class="nav-item" data-tab="categories"><i class="fas fa-tags"></i><span>Catégories</span></button>
+                        <a href="dashboard.html" class="nav-item"><i class="fas fa-arrow-left"></i><span>Retour au site</span></a>
+                    </nav>
+                </aside>
+
+                <main class="dashboard-main">
+                    <div class="tab-content active" id="stats">
+                        <h2 class="section-title">Tableau de <span class="gold">bord</span></h2>
+                        <div class="stats-grid" id="adminStats">
+                            <div class="stat-card"><div class="stat-icon orders"><i class="fas fa-users"></i></div><div class="stat-info"><h3 id="statUsers">-</h3><p>Utilisateurs</p></div></div>
+                            <div class="stat-card"><div class="stat-icon wishlist"><i class="fas fa-wine-bottle"></i></div><div class="stat-info"><h3 id="statProduits">-</h3><p>Produits</p></div></div>
+                            <div class="stat-card"><div class="stat-icon points"><i class="fas fa-shopping-cart"></i></div><div class="stat-info"><h3 id="statCommandes">-</h3><p>Commandes</p></div></div>
+                        </div>
+                        <div class="recent-orders">
+                            <h3>Commandes récentes</h3>
+                            <div class="orders-list" id="adminRecentOrders"></div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="users">
+                        <h2 class="section-title">Utilisateurs</h2>
+                        <div class="admin-table-wrap">
+                            <table class="admin-table" id="usersTable">
+                                <thead><tr><th>ID</th><th>Nom</th><th>Email</th><th>Rôle</th><th>Inscrit</th></tr></thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="orders">
+                        <h2 class="section-title">Commandes</h2>
+                        <div class="admin-table-wrap">
+                            <table class="admin-table" id="ordersTable">
+                                <thead><tr><th>ID</th><th>Client</th><th>Total</th><th>Statut</th><th>Date</th><th>Actions</th></tr></thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="produits">
+                        <h2 class="section-title">Produits</h2>
+                        <button class="btn-primary mb-2" id="btnAddProduit"><i class="fas fa-plus"></i> Ajouter un produit</button>
+                        <div class="admin-table-wrap">
+                            <table class="admin-table" id="produitsTable">
+                                <thead><tr><th>ID</th><th>Nom</th><th>Prix</th><th>Catégorie</th><th>Type</th><th>Alcool</th><th>Actions</th></tr></thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="categories">
+                        <h2 class="section-title">Catégories</h2>
+                        <button class="btn-primary mb-2" id="btnAddCategory"><i class="fas fa-plus"></i> Ajouter une catégorie</button>
+                        <div class="admin-table-wrap">
+                            <table class="admin-table" id="categoriesTable">
+                                <thead><tr><th>ID</th><th>Nom</th><th>Actions</th></tr></thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Élégance Spiritueux. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Ajouter produit -->
+    <div class="admin-modal" id="modalProduit">
+        <div class="admin-modal-content">
+            <div class="admin-modal-header">
+                <h3 id="modalProduitTitle">Ajouter un produit</h3>
+                <button type="button" class="admin-modal-close" data-close="modalProduit">&times;</button>
+            </div>
+            <form id="formProduit">
+                <input type="hidden" id="produitId" name="id">
+                <div class="form-group">
+                    <label for="produitName">Nom *</label>
+                    <input type="text" id="produitName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="produitPrice">Prix (€) *</label>
+                    <input type="number" id="produitPrice" name="price" step="0.01" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="produitCategory">Catégorie</label>
+                    <select id="produitCategory" name="category_id">
+                        <option value="">— Aucune —</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="produitDescription">Description</label>
+                    <textarea id="produitDescription" name="description" rows="3"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="produitType">Type</label>
+                        <select id="produitType" name="type">
+                            <option value="">— —</option>
+                            <option value="vin">Vin</option>
+                            <option value="champagne">Champagne</option>
+                            <option value="whisky">Whisky</option>
+                            <option value="cognac">Cognac</option>
+                            <option value="rhum">Rhum</option>
+                            <option value="vodka">Vodka</option>
+                            <option value="gin">Gin</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="produitRegion">Région</label>
+                        <select id="produitRegion" name="region">
+                            <option value="">— —</option>
+                            <option value="france">France</option>
+                            <option value="ecosse">Écosse</option>
+                            <option value="italie">Italie</option>
+                            <option value="japon">Japon</option>
+                            <option value="usa">USA</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="produitAlcohol">Alcool (%)</label>
+                        <input type="number" id="produitAlcohol" name="alcohol_percent" step="0.1" min="0" max="100" placeholder="ex: 13.5">
+                    </div>
+                    <div class="form-group">
+                        <label for="produitRating">Note</label>
+                        <input type="number" id="produitRating" name="rating" step="0.1" min="0" max="5" placeholder="ex: 4.5">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="produitImage">URL image</label>
+                    <input type="text" id="produitImage" name="image" placeholder="public/xxx.jpg">
+                </div>
+                <div class="admin-modal-footer">
+                    <button type="button" class="btn-secondary" data-close="modalProduit">Annuler</button>
+                    <button type="submit" class="btn-primary">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Ajouter/Modifier catégorie -->
+    <div class="admin-modal" id="modalCategory">
+        <div class="admin-modal-content">
+            <div class="admin-modal-header">
+                <h3 id="modalCategoryTitle">Ajouter une catégorie</h3>
+                <button type="button" class="admin-modal-close" data-close="modalCategory">&times;</button>
+            </div>
+            <form id="formCategory">
+                <input type="hidden" id="categoryId" name="id">
+                <div class="form-group">
+                    <label for="categoryName">Nom *</label>
+                    <input type="text" id="categoryName" name="name" required>
+                </div>
+                <div class="admin-modal-footer">
+                    <button type="button" class="btn-secondary" data-close="modalCategory">Annuler</button>
+                    <button type="submit" class="btn-primary">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

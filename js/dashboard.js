@@ -1,55 +1,5 @@
-// Mock data for dashboard
-const mockOrders = [
-  {
-    id: "CMD-2024-001",
-    date: "15/04/2024",
-    status: "delivered",
-    items: [
-      { name: "Château Margaux 2015", quantity: 1, price: 450, image: "/wine-bottle-premium.jpg" },
-      { name: "Dom Pérignon 2012", quantity: 2, price: 180, image: "/champagne-bottle-luxury.jpg" },
-    ],
-    total: 810,
-  },
-  {
-    id: "CMD-2024-002",
-    date: "22/04/2024",
-    status: "pending",
-    items: [{ name: "Macallan 18 ans", quantity: 1, price: 280, image: "/whisky-bottle-premium.jpg" }],
-    total: 280,
-  },
-  {
-    id: "CMD-2024-003",
-    date: "10/03/2024",
-    status: "delivered",
-    items: [
-      { name: "Hennessy XO", quantity: 1, price: 190, image: "/cognac-bottle-luxury.jpg" },
-      { name: "Grey Goose", quantity: 1, price: 45, image: "/premium-vodka-bottle.png" },
-    ],
-    total: 235,
-  },
-]
-
-const mockWishlist = [
-  { id: 1, name: "Château Pétrus 2010", price: 2800, image: "/premium-wine-bottle-luxury.jpg" },
-  { id: 2, name: "Louis XIII Cognac", price: 3500, image: "/cognac-bottle-crystal-luxury.jpg" },
-  { id: 3, name: "Cristal Roederer 2008", price: 450, image: "/champagne-bottle-luxury-gold.jpg" },
-  { id: 4, name: "Glenfiddich 50 ans", price: 18000, image: "/whisky-bottle-rare-premium.jpg" },
-]
-
-const mockAddresses = [
-  {
-    id: 1,
-    name: "Domicile",
-    address: "123 Rue de la République\n75001 Paris\nFrance",
-    isDefault: true,
-  },
-  {
-    id: 2,
-    name: "Bureau",
-    address: "45 Avenue des Champs-Élysées\n75008 Paris\nFrance",
-    isDefault: false,
-  },
-]
+// Données du dashboard - chargées depuis l'API pour l'utilisateur connecté
+let userOrders = []
 
 // Tab navigation
 function initTabs() {
@@ -111,7 +61,7 @@ function renderOrders(orders, containerId) {
                     <div class="order-date">${order.date}</div>
                 </div>
                 <span class="order-status ${order.status}">
-                    ${order.status === "delivered" ? "Livrée" : order.status === "pending" ? "En cours" : "Annulée"}
+                    ${order.status === "delivered" ? "Livrée" : order.status === "cancelled" ? "Annulée" : "En cours"}
                 </span>
             </div>
             <div class="order-items">
@@ -153,10 +103,10 @@ function initOrdersFilter() {
       btn.classList.add("active")
 
       const filter = btn.dataset.filter
-      let filteredOrders = mockOrders
+      let filteredOrders = userOrders
 
       if (filter !== "all") {
-        filteredOrders = mockOrders.filter((order) => order.status === filter)
+        filteredOrders = userOrders.filter((order) => order.status === filter)
       }
 
       renderOrders(filteredOrders, "allOrders")
@@ -241,26 +191,18 @@ function addToCart(productId) {
   }
 }
 
-// Render addresses
+// Render addresses (pas d'API adresses pour l'instant)
 function renderAddresses() {
   const container = document.getElementById("addressesGrid")
   if (!container) return
 
-  container.innerHTML = mockAddresses
-    .map(
-      (address) => `
-        <div class="address-card ${address.isDefault ? "default" : ""}">
-            ${address.isDefault ? '<span class="default-badge">Par défaut</span>' : ""}
-            <h4>${address.name}</h4>
-            <p>${address.address.replace(/\n/g, "<br>")}</p>
-            <div class="address-actions">
-                <button class="btn-secondary"><i class="fas fa-edit"></i> Modifier</button>
-                ${!address.isDefault ? '<button class="btn-secondary"><i class="fas fa-trash"></i> Supprimer</button>' : ""}
-            </div>
-        </div>
-    `,
-    )
-    .join("")
+  container.innerHTML = `
+    <div class="empty-state" style="grid-column: 1/-1;">
+      <i class="fas fa-map-marker-alt"></i>
+      <h3>Aucune adresse</h3>
+      <p>Cette fonctionnalité sera bientôt disponible</p>
+    </div>
+  `
 }
 
 // Add new address
@@ -302,11 +244,62 @@ function updateCartCount() {
   }
 }
 
+// Transforme les commandes API au format attendu par renderOrders
+function formatOrdersFromApi(commandes) {
+  return (commandes || []).map((c) => ({
+    id: c.id,
+    date: c.created_at ? new Date(c.created_at).toLocaleDateString("fr-FR") : "-",
+    status: c.status || "pending",
+    items: (c.CommandeItems || []).map((ci) => ({
+      name: ci.Produit?.name || "Produit",
+      quantity: ci.quantity,
+      price: parseFloat(ci.price),
+      image: ci.Produit?.image || "public/placeholder.jpg"
+    })),
+    total: parseFloat(c.total)
+  }))
+}
+
+// Charge les données de l'utilisateur connecté
+async function loadUserData() {
+  const user = auth.getCurrentUser()
+  if (!user) return
+
+  // Remplir le formulaire profil
+  const fullnameEl = document.getElementById("profileFullname")
+  const emailEl = document.getElementById("profileEmail")
+  if (fullnameEl) fullnameEl.value = user.fullname || ""
+  if (emailEl) emailEl.value = user.email || ""
+
+  // Charger les commandes depuis l'API
+  try {
+    const commandes = await api.getMyCommandes()
+    userOrders = formatOrdersFromApi(commandes)
+    renderOrders(userOrders.slice(0, 2), "recentOrders")
+    renderOrders(userOrders, "allOrders")
+    updateDashboardStats(userOrders)
+  } catch (e) {
+    console.warn("Erreur chargement commandes:", e)
+    userOrders = []
+    renderOrders([], "recentOrders")
+    renderOrders([], "allOrders")
+  }
+}
+
+// Met à jour les stats (commandes, favoris, total dépensé)
+function updateDashboardStats(orders) {
+  const statCards = document.querySelectorAll('#overview .stat-card')
+  if (statCards[0]) statCards[0].querySelector('h3').textContent = (orders || []).length
+  const wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]")
+  if (statCards[1]) statCards[1].querySelector('h3').textContent = wishlist.length
+  if (statCards[2]) statCards[2].querySelector('h3').textContent = "0" // Points fidélité (non implémenté)
+  const spent = (orders || []).reduce((s, o) => s + (o.total || 0), 0)
+  if (statCards[3]) statCards[3].querySelector('h3').textContent = spent.toFixed(0) + "€"
+}
+
 // Initialize dashboard
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   initTabs()
-  renderOrders(mockOrders.slice(0, 2), "recentOrders")
-  renderOrders(mockOrders, "allOrders")
   initOrdersFilter()
   renderWishlist()
   renderAddresses()
@@ -314,4 +307,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initProfileForm()
   updateCartCount()
   updateWishlistCount()
+
+  await loadUserData()
 })

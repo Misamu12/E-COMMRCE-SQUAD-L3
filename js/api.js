@@ -1,9 +1,8 @@
 /**
  * Configuration API - Connexion frontend avec le backend Express
  */
-const API_BASE = window.location.origin.includes('localhost')
-    ? 'http://localhost:3000/api'
-    : '/api';
+const API_BASE = 'http://localhost:3000/api'
+
 
 function getToken() {
     return localStorage.getItem('token');
@@ -53,5 +52,19 @@ const api = {
     // Commandes
     createCommande: (items, livraison_id) =>
         apiFetch('/commandes', { method: 'POST', body: JSON.stringify({ items, livraison_id }) }),
-    getMyCommandes: () => apiFetch('/commandes/me')
+    getMyCommandes: () => apiFetch('/commandes/me'),
+
+    // Admin (nécessite token + rôle admin)
+    admin: {
+        getStats: () => apiFetch('/admin/stats'),
+        getUsers: () => apiFetch('/admin/users'),
+        getOrders: () => apiFetch('/admin/orders'),
+        updateOrderStatus: (id, status) => apiFetch(`/admin/orders/${id}/status`, { method: 'PATCH', body: JSON.stringify({ status }) }),
+        createProduit: (data) => apiFetch('/admin/produits', { method: 'POST', body: JSON.stringify(data) }),
+        updateProduit: (id, data) => apiFetch(`/admin/produits/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
+        deleteProduit: (id) => apiFetch(`/admin/produits/${id}`, { method: 'DELETE' }),
+        createCategory: (data) => apiFetch('/admin/categories', { method: 'POST', body: JSON.stringify(data) }),
+        updateCategory: (id, data) => apiFetch(`/admin/categories/${id}`, { method: 'PUT', body: JSON.stringify(data) }),
+        deleteCategory: (id) => apiFetch(`/admin/categories/${id}`, { method: 'DELETE' })
+    }
 };

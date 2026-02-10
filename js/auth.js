@@ -73,7 +73,7 @@ class Auth {
     }
 
     checkAuthRedirect() {
-        const protectedPages = ['dashboard.html', 'checkout.html'];
+        const protectedPages = ['dashboard.html', 'checkout.html', 'admin.html'];
         const currentPage = window.location.pathname.split('/').pop();
         if (protectedPages.includes(currentPage) && !this.isAuthenticated()) {
             window.location.href = 'login.html';
@@ -137,9 +137,10 @@ if (loginForm) {
 
         try {
             if (!email || !password) throw new Error('Veuillez saisir votre email et mot de passe');
-            await auth.login(email, password);
+            const user = await auth.login(email, password);
             auth.showSuccess('Connexion réussie ! Redirection en cours...');
-            setTimeout(() => { window.location.href = 'dashboard.html'; }, 1500);
+            const redirectUrl = user?.role === 'admin' ? 'admin.html' : 'dashboard.html';
+            setTimeout(() => { window.location.href = redirectUrl; }, 1500);
         } catch (error) {
             auth.showError(error.message || 'Erreur lors de la connexion');
         }
@@ -157,6 +158,8 @@ if (logoutBtn) {
 function updateDashboardUserInfo() {
     const user = auth.getCurrentUser();
     if (!user) return;
+    const adminLink = document.getElementById('adminNavLink');
+    if (adminLink && user.role === 'admin') adminLink.style.display = '';
     const userName = document.getElementById('userName');
     if (userName) userName.textContent = user.fullname;
     const userEmail = document.querySelector('.user-email');
