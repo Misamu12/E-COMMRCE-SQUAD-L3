@@ -27,13 +27,15 @@ const categoriesRoutes = require('./routes/categories.routes');
 const commandesRoutes = require('./routes/commandes.routes');
 const livraisonRoutes = require('./routes/livraison.routes');
 const uploadRoutes = require('./routes/upload.routes');
+const adminRoutes = require('./routes/admin.routes');
 
 app.use('/api/auth', authRoutes);
+app.use('/api/admin', adminRoutes);
 app.use('/api/produits', produitsRoutes);
 app.use('/api/categories', categoriesRoutes);
 app.use('/api/commandes', commandesRoutes);
 app.use('/api/livraison', livraisonRoutes);
-app.use('/api/upload', uploadRoutes);
+app.use('/api/upload', uploadRoutes)
 
 
 const PORT = process.env.PORT || 3000;

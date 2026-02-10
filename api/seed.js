@@ -68,6 +68,17 @@ async function seed() {
             console.log('Types de livraison créés');
         }
 
+        const adminUser = await User.findOne({ where: { email: 'admin@elegance-spiritueux.fr' } });
+        if (!adminUser) {
+            await User.create({
+                role_id: 2,
+                fullname: 'Administrateur',
+                email: 'admin@elegance-spiritueux.fr',
+                password: 'admin123'
+            });
+            console.log('Compte admin créé : admin@elegance-spiritueux.fr / admin123');
+        }
+
         console.log('Seed terminé avec succès');
         process.exit(0);
     } catch (error) {
