@@ -63,9 +63,9 @@ async function loadCartWithProducts() {
         <h3 class="item-name">${product.name}</h3>
         <p class="item-category">${product.category || ''}</p>
         <div class="item-pricing">
-          <span class="item-unit-price">${product.price}€</span>
+          <span class="item-unit-price">${product.price}$</span>
           <span class="item-quantity">× ${qty}</span>
-          <span class="item-total-price">${itemTotal}€</span>
+          <span class="item-total-price">${itemTotal}$</span>
         </div>
       </div>
       <div class="item-actions">
@@ -104,7 +104,7 @@ async function loadSuggestions() {
           <p class="product-description">${p.category || ''}</p>
           <div class="product-rating">${'★'.repeat(Math.floor(p.rating || 4))} ${p.rating || 4}</div>
           <div class="product-footer">
-            <span class="product-price">${p.price}€</span>
+            <span class="product-price">${p.price}$</span>
             <button class="btn-add-cart" onclick="addToCartPanier(${p.id})">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
             </button>
@@ -148,9 +148,9 @@ function updateCartSummary() {
   const subEl = document.getElementById('subtotal');
   const shipEl = document.getElementById('shipping');
   const totalEl = document.getElementById('total');
-  if (subEl) subEl.textContent = subtotal.toFixed(2) + '€';
-  if (shipEl) shipEl.textContent = shipping === 0 ? 'Gratuite' : shipping + '€';
-  if (totalEl) totalEl.textContent = total.toFixed(2) + '€';
+  if (subEl) subEl.textContent = subtotal.toFixed(2) + '$';
+  if (shipEl) shipEl.textContent = shipping === 0 ? 'Gratuite' : shipping + '$';
+  if (totalEl) totalEl.textContent = total.toFixed(2) + '$';
 }
 
 function applyPromoCode() {
@@ -188,3 +188,8 @@ function addToCartPanier(productId) {
   updateCartSummary();
   updateCartCount();
 }
+
+// Exposer les fonctions pour les onclick du HTML dynamique
+window.updateQuantity = updateQuantity;
+window.removeFromCart = removeFromCart;
+window.addToCartPanier = addToCartPanier;

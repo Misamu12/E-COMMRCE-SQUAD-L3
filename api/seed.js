@@ -63,7 +63,7 @@ async function seed() {
             await TypeLivraison.bulkCreate([
                 { name: 'Livraison standard', price: 9.90 },
                 { name: 'Livraison express', price: 19.90 },
-                { name: 'Livraison gratuite (dès 200€)', price: 0 }
+                { name: 'Livraison gratuite (dès 200$)', price: 0 }
             ]);
             console.log('Types de livraison créés');
         }

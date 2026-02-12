@@ -1,5 +1,5 @@
-// Product data
-const bestSellersData = [
+// Product data (let pour permettre le remplacement par les données API)
+let bestSellersData = [
   {
     id: "1",
     name: "Château Margaux 2015",
@@ -49,6 +49,10 @@ const bestSellersData = [
 // Cart management - Stockage sous forme de tableau JSON
 let cart = JSON.parse(localStorage.getItem("cart")) || []
 
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart))
+}
+
 function updateCartCount() {
   const cartCount = document.getElementById("cartCount")
   if (cartCount) {
@@ -69,7 +73,7 @@ function addToCart(productId) {
     cart.push({ id: productId, quantity: 1 })
   }
 
-  localStorage.setItem("cart", JSON.stringify(cart))
+  saveCart()
   updateCartCount()
   showNotification("Produit ajouté au panier !")
 
@@ -105,8 +109,18 @@ function showNotification(message) {
 // Render products
 function renderBestSellers() {
   const container = document.getElementById("bestSellers")
-  if (!container) return
+  if (!container) {
+    console.warn("Container #bestSellers non trouvé")
+    return
+  }
 
+  if (!bestSellersData || bestSellersData.length === 0) {
+    console.warn("Aucune donnée de produit disponible")
+    container.innerHTML = '<p class="text-muted">Aucun produit disponible pour le moment.</p>'
+    return
+  }
+
+  console.log(`Affichage de ${bestSellersData.length} produits`)
   container.innerHTML = bestSellersData
     .map(
       (product) => `
@@ -115,7 +129,7 @@ function renderBestSellers() {
                 <img src="${product.image}" alt="${product.name}" class="product-image">
                 ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ""}
                 <div class="product-actions">
-                    <button class="product-action-btn" onclick="toggleWishlist('${product.id}')" aria-label="Ajouter aux favoris">
+                    <button class="product-action-btn ${isInWishlist(product.id) ? "wishlist-active" : ""}" data-product-id="${product.id}" onclick="toggleWishlist('${product.id}')" aria-label="Ajouter aux favoris">
                         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                         </svg>
@@ -139,8 +153,8 @@ function renderBestSellers() {
                 </div>
                 <div class="product-footer">
                     <div class="product-price-group">
-                        <span class="product-price">${product.price}€</span>
-                        ${product.originalPrice ? `<span class="product-original-price">${product.originalPrice}€</span>` : ""}
+                        <span class="product-price">${product.price}$</span>
+                        ${product.originalPrice ? `<span class="product-original-price">${product.originalPrice}$</span>` : ""}
                     </div>
                     <button class="add-to-cart-btn" onclick="addToCart('${product.id}')" aria-label="Ajouter au panier">
                         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -155,6 +169,27 @@ function renderBestSellers() {
     `,
     )
     .join("")
+  
+  // Observer les nouveaux éléments pour les animations
+  setTimeout(() => {
+    const productObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("aos-animate")
+        }
+      })
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" })
+    
+    const newElements = container.querySelectorAll("[data-aos]")
+    newElements.forEach((el) => {
+      productObserver.observe(el)
+      // Si l'élément est déjà visible, activer l'animation immédiatement
+      const rect = el.getBoundingClientRect()
+      if (rect.top < window.innerHeight) {
+        el.classList.add("aos-animate")
+      }
+    })
+  }, 50)
 }
 
 function generateStars(rating) {
@@ -176,19 +211,41 @@ function generateStars(rating) {
   return stars
 }
 
-// Wishlist functionality
-const wishlist = JSON.parse(localStorage.getItem("wishlist")) || []
+// Wishlist functionality - stocke des objets { id, name, price, image, category, rating } pour le dashboard
+function getWishlist() {
+  return JSON.parse(localStorage.getItem("wishlist") || "[]")
+}
+
+function saveWishlist(wishlist) {
+  localStorage.setItem("wishlist", JSON.stringify(wishlist))
+}
+
+function isInWishlist(productId) {
+  const w = getWishlist()
+  const idStr = String(productId)
+  return w.some((item) => (typeof item === "object" && item !== null ? String(item.id) : String(item)) === idStr)
+}
 
 function toggleWishlist(productId) {
-  const index = wishlist.indexOf(productId)
+  let wishlist = getWishlist()
+  const idStr = String(productId)
+  const index = wishlist.findIndex((item) => (typeof item === "object" && item !== null ? String(item.id) : String(item)) === idStr)
   if (index > -1) {
     wishlist.splice(index, 1)
     showNotification("Retiré des favoris")
   } else {
-    wishlist.push(productId)
+    const product = bestSellersData.find((p) => String(p.id) === idStr)
+    const obj = product
+      ? { id: product.id, name: product.name, price: product.price, image: product.image, category: product.category || "", rating: product.rating || 4.5 }
+      : { id: productId, name: "Produit", price: 0, image: "public/placeholder.jpg", category: "", rating: 4.5 }
+    wishlist.push(obj)
     showNotification("Ajouté aux favoris !")
   }
-  localStorage.setItem("wishlist", JSON.stringify(wishlist))
+  saveWishlist(wishlist)
+  if (typeof updateWishlistCount === "function") updateWishlistCount()
+  // Mettre à jour l’icône du bouton sur la page
+  const btn = document.querySelector(`.product-action-btn[data-product-id="${idStr}"]`)
+  if (btn) btn.classList.toggle("wishlist-active", isInWishlist(productId))
 }
 
 function quickView(productId) {
@@ -231,11 +288,14 @@ if (newsletterForm) {
 
 // Initialize
 document.addEventListener("DOMContentLoaded", async () => {
+  console.log("Initialisation de la page - données statiques:", bestSellersData.length, "produits")
+  
   if (typeof api !== 'undefined' && api.getProduits) {
     try {
       const prods = await api.getProduits()
-      if (prods && prods.length) {
-        bestSellersData = prods.slice(0, 8).map(p => ({
+      if (prods && prods.length > 0) {
+        console.log(`API retourne ${prods.length} produits, utilisation des données API`)
+        bestSellersData = prods.slice(0, 4).map(p => ({
           id: String(p.id),
           name: p.name,
           category: p.category || '',
@@ -246,9 +306,22 @@ document.addEventListener("DOMContentLoaded", async () => {
           reviews: 0,
           badge: null
         }))
+      } else {
+        console.log("API retourne un tableau vide, conservation des données statiques")
       }
-    } catch (e) { console.warn('API non disponible, données statiques utilisées') }
+    } catch (e) { 
+      console.warn('API non disponible, données statiques utilisées:', e.message) 
+    }
+  } else {
+    console.log("API non disponible, utilisation des données statiques")
   }
+  
+  // Limiter à 4 produits maximum pour l'affichage
+  if (bestSellersData.length > 4) {
+    bestSellersData = bestSellersData.slice(0, 4)
+  }
+  
+  console.log("Rendu de", bestSellersData.length, "produits")
   renderBestSellers()
   updateCartCount()
 })

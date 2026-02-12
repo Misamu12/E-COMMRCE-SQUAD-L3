@@ -1,9 +1,12 @@
-# TODO: Implement Register and Login Functionality
+# TODO: Make API Functional
 
-## Tasks
-- [ ] Create register.html page with registration form
-- [x] Create login.html page with login form
-- [ ] Create js/auth.js for authentication logic (register, login, logout, session management)
-- [ ] Update header navigation in all pages to show login/register or dashboard/logout based on auth state
-- [ ] Update dashboard.html to redirect to login if not authenticated
-- [x] Test the authentication flow
+## Completed Steps
+- [x] Create .env file with MySQL configuration (DB_HOST=localhost, DB_NAME=ecommerce, DB_USER=root, DB_PASSWORD=, DB_DIALECT=mysql)
+
+## Pending Steps
+- [ ] Install npm dependencies in api/ folder
+- [ ] Create MySQL database 'ecommerce'
+- [ ] Run bdd.sql script to create database tables
+- [ ] Run seed.js to populate database with sample data
+- [ ] Start API server in development mode (npm run dev)
+- [ ] Test the application by opening index.html in browser to verify products load without NetworkError

@@ -813,7 +813,45 @@
 .mb-2 { margin-bottom: 1rem; }
 .order-card { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 0.5rem; }
 .order-card .badge { background: var(--gold); color: var(--charcoal); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem; }
-.status-select { padding: 0.25rem; background: var(--charcoal); color: white; border: 1px solid rgba(212,175,55,0.3); border-radius: 4px; }
+.status-select { 
+  padding: 0.5rem 0.75rem; 
+  padding-right: 2rem;
+  background: var(--charcoal); 
+  color: white; 
+  border: 1px solid rgba(212,175,55,0.3); 
+  border-radius: 4px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23d4af37' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.status-select:hover {
+  border-color: rgba(212,175,55,0.6);
+  background-color: rgba(27, 27, 27, 0.8);
+}
+
+.status-select:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(212,175,55,0.2);
+}
+
+.status-select option {
+  background-color: var(--charcoal);
+  color: white;
+  padding: 0.5rem;
+}
+
+.status-select option:hover,
+.status-select option:checked,
+.status-select option:focus {
+  background-color: var(--gold);
+  color: var(--charcoal);
+}
 
 /* Admin modals */
 .admin-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 9999; align-items: center; justify-content: center; padding: 2rem; }
@@ -827,5 +865,48 @@
 .admin-modal .form-group { margin-bottom: 1rem; }
 .admin-modal .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .admin-modal label { display: block; margin-bottom: 0.35rem; font-weight: 500; color: var(--light-gray); }
-.admin-modal input, .admin-modal select, .admin-modal textarea { width: 100%; padding: 0.6rem; background: var(--dark-bg); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: white; font-size: 1rem; }
+.admin-modal input, .admin-modal select, .admin-modal textarea { 
+  width: 100%; 
+  padding: 0.6rem; 
+  padding-right: 2.5rem;
+  background: var(--dark-bg); 
+  border: 1px solid rgba(255,255,255,0.1); 
+  border-radius: 6px; 
+  color: white; 
+  font-size: 1rem;
+  appearance: none;
+}
+
+.admin-modal select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23d4af37' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.admin-modal select:hover {
+  border-color: rgba(212,175,55,0.5);
+  background-color: rgba(27, 27, 27, 0.8);
+}
+
+.admin-modal select:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212,175,55,0.2);
+}
+
+.admin-modal select option {
+  background-color: var(--dark-bg);
+  color: white;
+  padding: 0.75rem 1rem;
+}
+
+.admin-modal select option:hover,
+.admin-modal select option:checked,
+.admin-modal select option:focus {
+  background-color: var(--gold);
+  color: var(--charcoal);
+}
 .admin-modal-footer { display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); }

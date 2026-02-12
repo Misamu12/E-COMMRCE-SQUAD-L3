@@ -103,11 +103,15 @@
 }
 
 .wishlist-float.active i {
-  color: #ff4444;
+  color: #d4af37;
 }
 
 .wishlist-float.active i::before {
   content: "\f004";
+}
+
+.wishlist-float.active:hover i {
+  color: #b8860b;
 }
 
 .thumbnail-images {

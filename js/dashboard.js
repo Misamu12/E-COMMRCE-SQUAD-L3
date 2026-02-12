@@ -74,16 +74,15 @@ function renderOrders(orders, containerId) {
                             <h4>${item.name}</h4>
                             <p>Quantité: ${item.quantity}</p>
                         </div>
-                        <div class="order-item-price">${item.price}€</div>
+                        <div class="order-item-price">${item.price}$</div>
                     </div>
                 `,
                   )
                   .join("")}
             </div>
             <div class="order-footer">
-                <div class="order-total">Total: ${order.total}€</div>
+                <div class="order-total">Total: ${order.total}$</div>
                 <div class="order-actions">
-                    <button class="btn-secondary"><i class="fas fa-eye"></i> Détails</button>
                     ${order.status === "delivered" ? '<button class="btn-secondary"><i class="fas fa-redo"></i> Racheter</button>' : ""}
                 </div>
             </div>
@@ -114,15 +113,28 @@ function initOrdersFilter() {
   })
 }
 
+// Normalise un item wishlist (peut être un id seul ou un objet)
+function getWishlistItemDisplay(item) {
+  if (typeof item === "object" && item !== null && item.name !== undefined) {
+    return {
+      id: item.id,
+      name: item.name || "Produit",
+      price: item.price != null ? item.price : 0,
+      image: item.image || "public/placeholder.jpg",
+    }
+  }
+  const id = item != null ? String(item) : ""
+  return { id, name: "Produit #" + id, price: 0, image: "public/placeholder.jpg" }
+}
+
 // Render wishlist
 function renderWishlist() {
   const container = document.getElementById("wishlistGrid")
   if (!container) return
 
-  // Get wishlist from localStorage
-  const wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]")
+  const rawList = JSON.parse(localStorage.getItem("wishlist") || "[]")
 
-  if (wishlist.length === 0) {
+  if (rawList.length === 0) {
     container.innerHTML = `
             <div class="empty-state" style="grid-column: 1/-1;">
                 <i class="fas fa-heart"></i>
@@ -136,59 +148,61 @@ function renderWishlist() {
     return
   }
 
-  container.innerHTML = wishlist
-    .map(
-      (item) => `
+  container.innerHTML = rawList
+    .map((item) => {
+      const d = getWishlistItemDisplay(item)
+      const idSafe = String(d.id).replace(/'/g, "\\'").replace(/"/g, "&quot;")
+      return `
         <div class="wishlist-item">
-            <img src="${item.image}" alt="${item.name}" class="wishlist-image">
+            <img src="${(d.image || "").replace(/"/g, "&quot;")}" alt="${(d.name || "").replace(/"/g, "&quot;")}" class="wishlist-image">
             <div class="wishlist-info">
-                <h3>${item.name}</h3>
-                <div class="wishlist-price">${item.price}€</div>
+                <h3>${(d.name || "").replace(/</g, "&lt;")}</h3>
+                <div class="wishlist-price">${d.price}$</div>
                 <div class="wishlist-actions">
-                    <button class="btn-primary" onclick="addToCart(${item.id})">
+                    <button class="btn-primary" onclick="addToCartFromWishlist('${idSafe}')">
                         <i class="fas fa-shopping-cart"></i> Ajouter
                     </button>
-                    <button class="remove-wishlist" onclick="removeFromWishlist(${item.id})">
+                    <button class="remove-wishlist" onclick="removeFromWishlist('${idSafe}')">
                         <i class="fas fa-trash"></i>
                     </button>
                 </div>
             </div>
         </div>
-    `,
-    )
+    `
+    })
     .join("")
 }
 
 // Remove from wishlist
 function removeFromWishlist(productId) {
   let wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]")
-  wishlist = wishlist.filter((item) => item.id !== productId)
+  const idStr = String(productId)
+  wishlist = wishlist.filter((item) => {
+    const itemId = typeof item === "object" && item !== null ? item.id : item
+    return String(itemId) !== idStr
+  })
   localStorage.setItem("wishlist", JSON.stringify(wishlist))
   renderWishlist()
-  updateWishlistCount()
+  if (typeof updateWishlistCount === "function") updateWishlistCount()
 }
 
-// Add to cart from wishlist
-function addToCart(productId) {
-  const wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]")
-  const product = wishlist.find((item) => item.id === productId)
-
-  if (product) {
-    const cart = JSON.parse(localStorage.getItem("cart") || "[]")
-    const existingItem = cart.find((item) => item.id === productId)
-
-    if (existingItem) {
-      existingItem.quantity += 1
-    } else {
-      cart.push({ ...product, quantity: 1 })
-    }
-
-    localStorage.setItem("cart", JSON.stringify(cart))
-    updateCartCount()
-
-    // Show notification
-    alert("Produit ajouté au panier !")
+// Add to cart from wishlist (ne pas écraser addToCart de main.js)
+function addToCartFromWishlist(productId) {
+  const idStr = String(productId)
+  if (typeof cart === "undefined") {
+    const cartData = JSON.parse(localStorage.getItem("cart") || "[]")
+    const existing = cartData.find((i) => String(i.id) === idStr)
+    if (existing) existing.quantity += 1
+    else cartData.push({ id: productId, quantity: 1 })
+    localStorage.setItem("cart", JSON.stringify(cartData))
+  } else {
+    const existing = cart.find((i) => String(i.id) === idStr)
+    if (existing) existing.quantity += 1
+    else cart.push({ id: productId, quantity: 1 })
+    if (typeof saveCart === "function") saveCart()
   }
+  if (typeof updateCartCount === "function") updateCartCount()
+  alert("Produit ajouté au panier !")
 }
 
 // Render addresses (pas d'API adresses pour l'instant)
@@ -294,8 +308,12 @@ function updateDashboardStats(orders) {
   if (statCards[1]) statCards[1].querySelector('h3').textContent = wishlist.length
   if (statCards[2]) statCards[2].querySelector('h3').textContent = "0" // Points fidélité (non implémenté)
   const spent = (orders || []).reduce((s, o) => s + (o.total || 0), 0)
-  if (statCards[3]) statCards[3].querySelector('h3').textContent = spent.toFixed(0) + "€"
+  if (statCards[3]) statCards[3].querySelector('h3').textContent = spent.toFixed(0) + "$"
 }
+
+// Exposer pour les onclick du HTML dynamique (favoris)
+window.removeFromWishlist = removeFromWishlist
+window.addToCartFromWishlist = addToCartFromWishlist
 
 // Initialize dashboard
 document.addEventListener("DOMContentLoaded", async () => {

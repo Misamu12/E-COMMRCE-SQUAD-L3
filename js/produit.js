@@ -1,6 +1,41 @@
-// Page produit - charge les données depuis l'API
+// Page produit - charge les données depuis l'API ou données statiques (fallback)
 let productData = null;
 let relatedProducts = [];
+
+/** Retourne un produit depuis les best-sellers (main.js) pour fallback quand l'API est indisponible */
+function getStaticProduct(productId) {
+  const list = typeof bestSellersData !== 'undefined' ? bestSellersData : [];
+  const p = list.find((item) => String(item.id) === String(productId));
+  if (!p) return null;
+  return {
+    id: p.id,
+    name: p.name,
+    category: p.category || '',
+    price: p.price,
+    originalPrice: p.originalPrice,
+    image: p.image,
+    images: p.images || [p.image],
+    description: p.description || `Découvrez ${p.name}, un produit de notre sélection ${p.category}.`,
+    rating: p.rating || 4.5,
+    reviews: p.reviews || 0
+  };
+}
+
+/** Liste des produits pour les "produits similaires" en mode fallback */
+function getStaticRelatedProducts(excludeId, limit = 4) {
+  const list = typeof bestSellersData !== 'undefined' ? bestSellersData : [];
+  return list
+    .filter((item) => String(item.id) !== String(excludeId))
+    .slice(0, limit)
+    .map((p) => ({
+      id: p.id,
+      name: p.name,
+      category: p.category || '',
+      price: p.price,
+      image: p.image,
+      rating: p.rating || 4.5
+    }));
+}
 
 document.addEventListener('DOMContentLoaded', async () => {
   const params = new URLSearchParams(window.location.search);
@@ -20,15 +55,26 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupWishlist();
 
     const all = await api.getProduits();
-    relatedProducts = all.filter((p) => p.id !== productData.id && p.category === productData.category).slice(0, 4);
+    relatedProducts = all.filter((p) => String(p.id) !== String(productData.id) && p.category === productData.category).slice(0, 4);
     if (relatedProducts.length < 4) {
-      relatedProducts = all.filter((p) => p.id !== productData.id).slice(0, 4);
+      relatedProducts = all.filter((p) => String(p.id) !== String(productData.id)).slice(0, 4);
     }
     loadRelatedProducts();
   } catch (err) {
-    console.error('Erreur chargement produit:', err);
-    document.querySelector('.product-detail .container').innerHTML =
-      '<p>Produit non trouvé ou erreur de chargement.</p>';
+    console.warn('API indisponible, utilisation des données statiques:', err);
+    productData = getStaticProduct(productId);
+    if (productData) {
+      loadProductData();
+      setupThumbnails();
+      setupQuantityControls();
+      setupAddToCart();
+      setupWishlist();
+      relatedProducts = getStaticRelatedProducts(productId, 4);
+      loadRelatedProducts();
+    } else {
+      document.querySelector('.product-detail .container').innerHTML =
+        '<p class="error-message">Produit non trouvé ou erreur de chargement.</p>';
+    }
   }
 
   updateCartCount();
@@ -38,7 +84,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 function loadProductData() {
   if (!productData) return;
   document.getElementById('productTitle').textContent = productData.name;
-  document.getElementById('productPrice').textContent = productData.price + '€';
+  document.getElementById('productPrice').textContent = productData.price + '$';
   document.getElementById('productDescription').textContent = productData.description || '';
   const mainImg = document.getElementById('mainProductImage');
   mainImg.src = productData.image || productData.images?.[0] || 'public/placeholder.jpg';
@@ -109,19 +155,27 @@ function setupWishlist() {
   const wishlistBtn = document.getElementById('wishlistProductBtn');
   if (!wishlistBtn || !productData) return;
 
-  let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-  if (wishlist.some((item) => item.id === productData.id)) wishlistBtn.classList.add('active');
+  const icon = wishlistBtn.querySelector('i');
+  const w = JSON.parse(localStorage.getItem('wishlist') || '[]');
+  const idStr = String(productData.id);
+  const inWishlist = w.some((item) => (typeof item === 'object' && item !== null ? String(item.id) : String(item)) === idStr);
+  if (inWishlist) {
+    wishlistBtn.classList.add('active');
+    if (icon) icon.className = 'fas fa-heart';
+  }
 
   wishlistBtn.addEventListener('click', function () {
-    wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-    const idx = wishlist.findIndex((item) => item.id === productData.id);
+    let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+    const idx = wishlist.findIndex((item) => (typeof item === 'object' && item !== null ? String(item.id) : String(item)) === idStr);
     if (idx >= 0) {
       wishlist.splice(idx, 1);
       this.classList.remove('active');
+      if (this.querySelector('i')) this.querySelector('i').className = 'far fa-heart';
       showToast('Produit retiré des favoris');
     } else {
       wishlist.push({ id: productData.id, name: productData.name, price: productData.price, image: productData.image, category: productData.category, rating: productData.rating });
       this.classList.add('active');
+      if (this.querySelector('i')) this.querySelector('i').className = 'fas fa-heart';
       showToast('Produit ajouté aux favoris !');
     }
     localStorage.setItem('wishlist', JSON.stringify(wishlist));
@@ -133,28 +187,30 @@ function loadRelatedProducts() {
   const container = document.getElementById('relatedProducts');
   if (!container) return;
 
+  const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
   container.innerHTML = relatedProducts
-    .map(
-      (p) => `
+    .map((p) => {
+      const inWishlist = wishlist.some((item) => (typeof item === 'object' && item !== null ? String(item.id) : String(item)) === String(p.id));
+      return `
     <div class="product-card fade-in" data-product-id="${p.id}">
       <div class="product-image">
         <a href="produit.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a>
-        <button class="wishlist-btn" data-product-id="${p.id}"><i class="far fa-heart"></i></button>
+        <button class="wishlist-btn ${inWishlist ? 'active' : ''}" data-product-id="${p.id}"><i class="${inWishlist ? 'fas' : 'far'} fa-heart"></i></button>
       </div>
       <div class="product-info">
         <span class="product-category">${p.category || ''}</span>
         <h3 class="product-name"><a href="produit.html?id=${p.id}">${p.name}</a></h3>
         <div class="product-rating">${'★'.repeat(Math.floor(p.rating || 4))} ${p.rating || 4}</div>
         <div class="product-footer">
-          <span class="product-price">${p.price}€</span>
+          <span class="product-price">${p.price}$</span>
           <button class="btn-add" onclick="addToCartQuick(${p.id}, '${(p.name || '').replace(/'/g, "\\'")}', ${p.price}, '${(p.image || '').replace(/'/g, "\\'")}')">
             <i class="fas fa-shopping-cart"></i>
           </button>
         </div>
       </div>
     </div>
-  `
-    )
+  `;
+    })
     .join('');
 
   container.querySelectorAll('.wishlist-btn').forEach((btn) => {
@@ -177,8 +233,9 @@ function addToCartQuick(id, name, price, image) {
 
 function toggleWishlistQuick(productId) {
   const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-  const product = relatedProducts.find((p) => p.id === productId);
-  const idx = wishlist.findIndex((item) => item.id === productId);
+  const idStr = String(productId);
+  const product = relatedProducts.find((p) => String(p.id) === idStr);
+  const idx = wishlist.findIndex((item) => (typeof item === 'object' && item !== null ? String(item.id) : String(item)) === idStr);
   const btn = document.querySelector(`.wishlist-btn[data-product-id="${productId}"]`);
   const icon = btn?.querySelector('i');
 

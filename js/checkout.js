@@ -36,15 +36,15 @@ document.addEventListener('DOMContentLoaded', async () => {
           ${itemsWithDetails.map(i => `
             <div class="checkout-item">
               <span>${i.name} × ${i.quantity}</span>
-              <span>${(i.price * i.quantity).toFixed(2)}€</span>
+              <span>${(i.price * i.quantity).toFixed(2)}$</span>
             </div>
           `).join('')}
-          <div class="summary-line"><span>Sous-total</span><span>${subtotal.toFixed(2)}€</span></div>
-          <div class="summary-line"><span>Livraison (${selectedLivraison?.name || 'Standard'})</span><span>${(selectedLivraison?.price || 0) === 0 ? 'Gratuite' : (selectedLivraison?.price || 0) + '€'}</span></div>
-          <div class="summary-total"><span>Total</span><span class="gold">${total.toFixed(2)}€</span></div>
+          <div class="summary-line"><span>Sous-total</span><span>${subtotal.toFixed(2)}$</span></div>
+          <div class="summary-line"><span>Livraison (${(selectedLivraison?.name || 'Standard').replace(/€/g, '$')})</span><span>${(selectedLivraison?.price || 0) === 0 ? 'Gratuite' : (selectedLivraison?.price || 0) + '$'}</span></div>
+          <div class="summary-total"><span>Total</span><span class="gold">${total.toFixed(2)}$</span></div>
         </div>
         <div class="checkout-actions">
-          <p><strong>Livraison :</strong> ${selectedLivraison?.name || 'Standard'}</p>
+          <p><strong>Livraison :</strong> ${(selectedLivraison?.name || 'Standard').replace(/€/g, '$')}</p>
           <button class="btn-primary btn-full" id="confirm-order">Confirmer la commande</button>
         </div>
       </div>
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <div class="checkout-success">
             <h2>Commande confirmée !</h2>
             <p>Numéro de commande : <strong>#${commande.id}</strong></p>
-            <p>Total : ${commande.total}€</p>
+            <p>Total : ${commande.total}$</p>
             <a href="dashboard.html" class="btn-primary">Voir mon compte</a>
             <a href="catalogue.html" class="btn-secondary">Continuer mes achats</a>
           </div>

@@ -62,7 +62,7 @@ async function loadStats() {
     const list = document.getElementById('adminRecentOrders');
     list.innerHTML = (data.recentOrders || []).map(o => `
       <div class="order-card">
-        <span>#${o.id} - ${o.user || '-'} - ${o.total}€</span>
+        <span>#${o.id} - ${o.user || '-'} - ${o.total}$</span>
         <span class="badge">${o.status}</span>
       </div>
     `).join('') || '<p>Aucune commande</p>';
@@ -92,7 +92,7 @@ async function loadOrders() {
       <tr>
         <td>#${o.id}</td>
         <td>${o.user?.fullname || '-'}<br><small>${o.user?.email || ''}</small></td>
-        <td>${o.total}€</td>
+        <td>${o.total}$</td>
         <td><select class="status-select" data-id="${o.id}"><option value="pending" ${o.status === 'pending' ? 'selected' : ''}>En attente</option><option value="processing" ${o.status === 'processing' ? 'selected' : ''}>En cours</option><option value="delivered" ${o.status === 'delivered' ? 'selected' : ''}>Livrée</option><option value="cancelled" ${o.status === 'cancelled' ? 'selected' : ''}>Annulée</option></select></td>
         <td>${o.created_at ? new Date(o.created_at).toLocaleDateString() : '-'}</td>
         <td></td>
@@ -121,7 +121,7 @@ async function loadProduits() {
       <tr>
         <td>${p.id}</td>
         <td>${p.name}</td>
-        <td>${p.price}€</td>
+        <td>${p.price}$</td>
         <td>${p.category || catMap[p.category_id] || '-'}</td>
         <td>${p.type || '-'}</td>
         <td>${p.alcohol_percent ? p.alcohol_percent + '%' : '-'}</td>

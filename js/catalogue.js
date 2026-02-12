@@ -17,19 +17,26 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
+function isInWishlistCatalogue(productId) {
+  const w = JSON.parse(localStorage.getItem('wishlist') || '[]');
+  const idStr = String(productId);
+  return w.some((item) => (typeof item === 'object' && item !== null ? String(item.id) : String(item)) === idStr);
+}
+
 function renderProducts(products) {
   const grid = document.getElementById('products-grid');
   if (!grid) return;
   grid.innerHTML = '';
 
   products.forEach((product, index) => {
+    const inWishlist = isInWishlistCatalogue(product.id);
     const card = document.createElement('div');
     card.className = 'product-card fade-in';
     card.style.animationDelay = `${index * 0.1}s`;
     card.innerHTML = `
             <div class="product-image">
                 <img src="${product.image}" alt="${product.name}">
-                <button class="wishlist-btn" onclick="toggleWishlist(${product.id})">
+                <button class="wishlist-btn ${inWishlist ? 'wishlist-active' : ''}" data-product-id="${product.id}" onclick="toggleWishlistCatalogue(${typeof product.id === 'string' ? JSON.stringify(product.id) : product.id})">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                     </svg>
@@ -47,7 +54,7 @@ function renderProducts(products) {
                     <span>${product.rating || 4}</span>
                 </div>
                 <div class="product-footer">
-                    <span class="product-price">${product.price}€</span>
+                    <span class="product-price">${product.price}$</span>
                     <button class="btn-add-cart" onclick="addToCart(${product.id})">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="9" cy="21" r="1"></circle>
@@ -137,12 +144,19 @@ function updateResultsCount() {
   if (el) el.textContent = filteredProducts.length;
 }
 
-function toggleWishlist(productId) {
-  const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-  const idx = wishlist.findIndex((w) => w.id === productId);
+function toggleWishlistCatalogue(productId) {
+  const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+  const idStr = String(productId);
+  const idx = wishlist.findIndex((item) => (typeof item === 'object' && item !== null ? String(item.id) : String(item)) === idStr);
   if (idx >= 0) wishlist.splice(idx, 1);
-  else wishlist.push({ id: productId, ...allProducts.find((p) => p.id === productId) });
+  else {
+    const p = allProducts.find((x) => String(x.id) === idStr);
+    wishlist.push(p ? { id: p.id, name: p.name, price: p.price, image: p.image, category: p.category, rating: p.rating } : { id: productId, name: '', price: 0, image: '', category: '' });
+  }
   localStorage.setItem('wishlist', JSON.stringify(wishlist));
+  const btn = document.querySelector(`.wishlist-btn[data-product-id="${idStr}"]`);
+  if (btn) btn.classList.toggle('wishlist-active', isInWishlistCatalogue(productId));
+  if (typeof updateWishlistCount === 'function') updateWishlistCount();
 }
 
 function addToCart(productId) {
