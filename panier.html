@@ -6,6 +6,56 @@
     <title>Panier - Spiritueux Premium</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="styles/panier.css">
+        <style>
+        :root {
+  --color-gold: #d4af37;
+  --color-gold-dark: #b8941f;
+  --color-dark: #111;
+  --color-light: #fff;
+}
+
+/* Bouton principal */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--color-gold);
+  color: var(--color-dark);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* Hover */
+.btn:hover {
+  background: var(--color-gold-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Click */
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Bouton outline (style secondaire) */
+.btn-outline {
+  background: transparent;
+  color: var(--color-gold);
+  border: 2px solid var(--color-gold);
+}
+
+.btn-outline:hover {
+  background: var(--color-gold);
+  color: var(--color-dark);
+}
+
+    </style>
 </head>
 <body>
    <header id="header" class="header">
@@ -76,7 +126,7 @@
                             </svg>
                             <h2>Votre panier est vide</h2>
                             <p>Découvrez notre sélection de spiritueux d'exception</p>
-                            <a href="catalogue.html" class="btn-primary">Découvrir le catalogue</a>
+                            <a href="catalogue.html" class="btn">Découvrir le catalogue</a>
                         </div>
                     </div>
                 </div>
@@ -97,7 +147,7 @@
 
                     <div class="promo-code">
                         <input type="text" placeholder="Code promo" id="promo-input">
-                        <button class="btn-secondary" id="apply-promo">Appliquer</button>
+                        <button class="btn" id="apply-promo">Appliquer</button>
                     </div>
 
                     <div class="summary-line discount" id="discount-line" style="display: none;">
@@ -110,8 +160,8 @@
                         <span id="total" class="gold">0$</span>
                     </div>
 
-                    <button class="btn-primary btn-full" id="checkout-btn">
-                        Procéder au paiement
+                    <button class="btn" id="checkout-btn">
+                        Procéder au paiement d'achats
                     </button>
 
                     <div class="payment-methods">

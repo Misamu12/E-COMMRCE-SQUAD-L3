@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         </div>
         <div class="checkout-actions">
           <p><strong>Livraison :</strong> ${(selectedLivraison?.name || 'Standard').replace(/€/g, '$')}</p>
-          <button class="btn-primary btn-full" id="confirm-order">Confirmer la commande</button>
+          <button class="btn" id="confirm-order">Confirmer votre commande</button>
         </div>
       </div>
     `;
@@ -62,8 +62,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             <h2>Commande confirmée !</h2>
             <p>Numéro de commande : <strong>#${commande.id}</strong></p>
             <p>Total : ${commande.total}$</p>
-            <a href="dashboard.html" class="btn-primary">Voir mon compte</a>
-            <a href="catalogue.html" class="btn-secondary">Continuer mes achats</a>
+            <a href="dashboard.html" class="btn">Voir mon compte</a>
+            <a href="catalogue.html" class="btn">Continuer mes achats</a>
           </div>
         `;
       } catch (err) {

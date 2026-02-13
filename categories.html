@@ -6,6 +6,56 @@
     <title>Catégories - Spiritueux Premium</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="styles/categories.css">
+    <style>
+        :root {
+  --color-gold: #d4af37;
+  --color-gold-dark: #b8941f;
+  --color-dark: #111;
+  --color-light: #fff;
+}
+
+/* Bouton principal */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--color-gold);
+  color: var(--color-dark);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* Hover */
+.btn:hover {
+  background: var(--color-gold-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Click */
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Bouton outline (style secondaire) */
+.btn-outline {
+  background: transparent;
+  color: var(--color-gold);
+  border: 2px solid var(--color-gold);
+}
+
+.btn-outline:hover {
+  background: var(--color-gold);
+  color: var(--color-dark);
+}
+
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -75,7 +125,7 @@
                         <div class="category-overlay">
                             <h2 class="category-title">Vins</h2>
                             <p class="category-description">Grands crus et appellations prestigieuses</p>
-                            <a href="catalogue.html" class="btn-primary">Explorer</a>
+                            <a href="catalogue.html" class="btn">Explorer</a>
                         </div>
                     </div>
                     <div class="category-info">
@@ -93,7 +143,7 @@
                         <div class="category-overlay">
                             <h2 class="category-title">Champagne</h2>
                             <p class="category-description">Maisons prestigieuses et cuvées d'exception</p>
-                            <a href="catalogue.html" class="btn-primary">Explorer</a>
+                            <a href="catalogue.html" class="btn">Explorer</a>
                         </div>
                     </div>
                     <div class="category-info">
@@ -111,7 +161,7 @@
                         <div class="category-overlay">
                             <h2 class="category-title">Whisky</h2>
                             <p class="category-description">Single malts et blends d'excellence</p>
-                            <a href="catalogue.html" class="btn-primary">Explorer</a>
+                            <a href="catalogue.html" class="btn">Explorer</a>
                         </div>
                     </div>
                     <div class="category-info">
@@ -129,7 +179,7 @@
                         <div class="category-overlay">
                             <h2 class="category-title">Cognac</h2>
                             <p class="category-description">L'élégance française à son apogée</p>
-                            <a href="catalogue.html" class="btn-primary">Explorer</a>
+                            <a href="catalogue.html" class="btn">Explorer</a>
                         </div>
                     </div>
                     <div class="category-info">
@@ -147,7 +197,7 @@
                         <div class="category-overlay">
                             <h2 class="category-title">Rhum</h2>
                             <p class="category-description">Rhums agricoles et vieux rhums rares</p>
-                            <a href="catalogue.html" class="btn-primary">Explorer</a>
+                            <a href="catalogue.html" class="btn">Explorer</a>
                         </div>
                     </div>
                     <div class="category-info">
@@ -165,7 +215,7 @@
                         <div class="category-overlay">
                             <h2 class="category-title">Vodka</h2>
                             <p class="category-description">Pureté et raffinement</p>
-                            <a href="catalogue.html" class="btn-primary">Explorer</a>
+                            <a href="catalogue.html" class="btn">Explorer</a>
                         </div>
                     </div>
                     <div class="category-info">
@@ -179,11 +229,11 @@
                 <!-- Gin -->
                 <div class="category-card fade-in" style="animation-delay: 0.7s;">
                     <div class="category-image">
-                        <img src="public/whisky-bottle-rare-premium.jpg" alt="Gin">
+                        <img src="public/WhatsApp Image 2026-02-13 at 00.17.23.jpeg" alt="Gin">
                         <div class="category-overlay">
                             <h2 class="category-title">Gin</h2>
                             <p class="category-description">Gins artisanaux et botaniques rares</p>
-                            <a href="catalogue.html" class="btn-primary">Explorer</a>
+                            <a href="catalogue.html" class="btn">Explorer</a>
                         </div>
                     </div>
                     <div class="category-info">
@@ -197,11 +247,28 @@
                 <!-- Liqueurs -->
                 <div class="category-card fade-in" style="animation-delay: 0.8s;">
                     <div class="category-image">
-                        <img src="public/whisky-bottle-rare-premium.jpg" alt="Liqueurs">
+                        <img src="public/champagne-bottle-luxury.jpg" alt="Liqueurs">
                         <div class="category-overlay">
                             <h2 class="category-title">Liqueurs</h2>
                             <p class="category-description">Créations artisanales et classiques</p>
-                            <a href="catalogue.html" class="btn-primary">Explorer</a>
+                            <a href="catalogue.html" class="btn">Explorer</a>
+                        </div>
+                    </div>
+                    <div class="category-info">
+                        <div class="category-stats">
+                            <span>40+ références</span>
+                            <span>À partir de 28$</span>
+                        </div>
+                    </div>
+                </div>
+                  <!-- Cidres -->
+                <div class="category-card fade-in" style="animation-delay: 0.8s;">
+                    <div class="category-image">
+                        <img src="public/WhatsApp Image 2026-02-13 at 00.17.22.jpeg" alt="Liqueurs">
+                        <div class="category-overlay">
+                            <h2 class="category-title">Cidres</h2>
+                            <p class="category-description"> une aromatique exceptionnelle</p>
+                            <a href="catalogue.html" class="btn">Explorer</a>
                         </div>
                     </div>
                     <div class="category-info">

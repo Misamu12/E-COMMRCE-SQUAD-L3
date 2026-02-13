@@ -6,6 +6,56 @@
     <title>À Propos - Spiritueux Premium</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="styles/about.css">
+    <style>
+        :root {
+  --color-gold: #d4af37;
+  --color-gold-dark: #b8941f;
+  --color-dark: #111;
+  --color-light: #fff;
+}
+
+/* Bouton principal */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--color-gold);
+  color: var(--color-dark);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* Hover */
+.btn:hover {
+  background: var(--color-gold-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Click */
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Bouton outline (style secondaire) */
+.btn-outline {
+  background: transparent;
+  color: var(--color-gold);
+  border: 2px solid var(--color-gold);
+}
+
+.btn-outline:hover {
+  background: var(--color-gold);
+  color: var(--color-dark);
+}
+
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -71,7 +121,7 @@
                 <div class="story-text">
                     <h2 class="gold">Une Passion Familiale</h2>
                     <p>
-                        Fondée en 1995 par Pierre Delacroix, ÉliteSpirits est née d'une passion pour les spiritueux 
+                        Fondée en 1995 par THE KING MUFASA, ÉliteSpirits est née d'une passion pour les spiritueux 
                         d'exception et d'un désir de partager les plus belles créations avec les amateurs éclairés.
                     </p>
                     <p>
@@ -191,8 +241,8 @@
                 <h2>Besoin de Conseils?</h2>
                 <p>Notre équipe d'experts est à votre disposition pour vous guider dans votre sélection</p>
                 <div class="cta-buttons">
-                    <a href="mailto:contact@elitespirits.fr" class="btn-primary">Nous Contacter</a>
-                    <a href="tel:+33123456789" class="btn-secondary">+243 00 00 00 00 00</a>
+                    <a href="mailto:contact@elitespirits.fr" class="btn">Nous Contacter</a>
+                    <a href="tel:+33123456789" class="btn">+243 00 00 00 00 00</a>
                 </div>
             </div>
         </div>
