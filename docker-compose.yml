@@ -1,0 +1,51 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ecommerce_spiritueux_app
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src/api:/app/src/api
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: randy
+      DB_PASSWORD: MUFASA
+      DB_NAME: ecommerce_spiritueux
+
+  mysql:
+    image: mysql:8.0
+    container_name: pos_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ecommerce_spiritueux
+      MYSQL_USER: randy
+      MYSQL_PASSWORD: MUFASA
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./db/ecommerce_spiritueux.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: ecommerce_spiritueux_phpmyadmin
+    restart: always
+    depends_on:
+      - mysql
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: root
+
+volumes:
+  mysql_data:
